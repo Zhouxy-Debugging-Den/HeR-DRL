@@ -1,0 +1,234 @@
+2024-07-05 17:11:23, INFO: Using device: cpu
+2024-07-05 17:11:23, INFO: Using randomseed: 5
+2024-07-05 17:11:23, INFO: Loaded RL weights with best VAL
+2024-07-05 17:11:23, INFO: Query environment: True
+2024-07-05 17:11:23, INFO: self.model:ValueNetwork(
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=8, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_o): Sequential(
+    (0): Linear(in_features=8, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (conv): Graphgnn(
+    (conv1): GraphConv(32, 32)
+    (conv2): GraphConv(32, 32)
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+  )
+)
+2024-07-05 17:11:23, INFO: GCN layers: 2
+2024-07-05 17:11:23, INFO: Policy: HoR-DRL
+2024-07-05 17:11:26, INFO: Using device: cpu
+2024-07-05 17:11:26, INFO: Using randomseed: 1005
+2024-07-05 17:11:26, INFO: Loaded RL weights with best VAL
+2024-07-05 17:11:57, INFO: Using device: cpu
+2024-07-05 17:11:57, INFO: Using randomseed: 5
+2024-07-05 17:11:57, INFO: Loaded RL weights with best VAL
+2024-07-05 17:11:57, INFO: Query environment: True
+2024-07-05 17:11:57, INFO: self.model:ValueNetwork(
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_o): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (conv): Graphgnn(
+    (conv1): GraphConv(32, 32)
+    (conv2): GraphConv(32, 32)
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+  )
+)
+2024-07-05 17:11:57, INFO: GCN layers: 2
+2024-07-05 17:11:57, INFO: Policy: HoR-DRL
+2024-07-05 17:11:57, INFO: human number: 5
+2024-07-05 17:11:57, INFO: human policy: orca
+2024-07-05 17:11:57, INFO: other robot:2
+2024-07-05 17:11:57, INFO: Not randomize human's radius and preferred speed
+2024-07-05 17:11:57, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-07-05 17:11:57, INFO: Square width: 10, circle width: 4
+2024-07-05 17:11:57, INFO: human_num: 5
+2024-07-05 17:11:57, INFO: rotation constraint: 0.5235987755982988
+2024-07-05 17:11:57, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-07-05 17:12:02, INFO: Using device: cpu
+2024-07-05 17:12:02, INFO: Using randomseed: 5
+2024-07-05 17:12:02, INFO: Loaded RL weights with best VAL
+2024-07-05 17:12:02, INFO: Query environment: True
+2024-07-05 17:12:02, INFO: self.model:ValueNetwork(
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_o): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (conv): Graphgnn(
+    (conv1): GraphConv(32, 32)
+    (conv2): GraphConv(32, 32)
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+  )
+)
+2024-07-05 17:12:02, INFO: GCN layers: 2
+2024-07-05 17:12:02, INFO: Policy: HoR-DRL
+2024-07-05 17:12:02, INFO: human number: 5
+2024-07-05 17:12:02, INFO: human policy: orca
+2024-07-05 17:12:02, INFO: other robot:2
+2024-07-05 17:12:02, INFO: Not randomize human's radius and preferred speed
+2024-07-05 17:12:02, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-07-05 17:12:02, INFO: Square width: 10, circle width: 4
+2024-07-05 17:12:02, INFO: human_num: 5
+2024-07-05 17:12:02, INFO: rotation constraint: 0.5235987755982988
+2024-07-05 17:12:02, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-07-05 17:12:08, INFO: Using device: cpu
+2024-07-05 17:12:08, INFO: Using randomseed: 1005
+2024-07-05 17:12:08, INFO: Loaded RL weights with best VAL
+2024-07-05 17:12:09, INFO: Query environment: True
+2024-07-05 17:12:09, INFO: self.model:ValueNetwork(
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_o): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (conv): Graphgnn(
+    (conv1): GraphConv(32, 32)
+    (conv2): GraphConv(32, 32)
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+  )
+)
+2024-07-05 17:12:09, INFO: GCN layers: 2
+2024-07-05 17:12:09, INFO: Policy: HoR-DRL
+2024-07-05 17:12:09, INFO: human number: 5
+2024-07-05 17:12:09, INFO: human policy: orca
+2024-07-05 17:12:09, INFO: other robot:2
+2024-07-05 17:12:09, INFO: Not randomize human's radius and preferred speed
+2024-07-05 17:12:09, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-07-05 17:12:09, INFO: Square width: 10, circle width: 4
+2024-07-05 17:12:09, INFO: human_num: 5
+2024-07-05 17:12:09, INFO: rotation constraint: 0.5235987755982988
+2024-07-05 17:12:09, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-07-05 17:13:29, INFO: Using device: cpu
+2024-07-05 17:13:29, INFO: Using randomseed: 5
+2024-07-05 17:13:29, INFO: Loaded RL weights with best VAL
+2024-07-05 17:13:29, INFO: Query environment: True
+2024-07-05 17:13:29, INFO: self.model:ValueNetwork(
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_o): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (conv): Graphgnn(
+    (conv1): GraphConv(32, 32)
+    (conv2): GraphConv(32, 32)
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+  )
+)
+2024-07-05 17:13:29, INFO: GCN layers: 2
+2024-07-05 17:13:29, INFO: Policy: HoR-DRL
+2024-07-05 17:13:29, INFO: human number: 5
+2024-07-05 17:13:29, INFO: human policy: orca
+2024-07-05 17:13:29, INFO: other robot:2
+2024-07-05 17:13:29, INFO: Not randomize human's radius and preferred speed
+2024-07-05 17:13:29, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-07-05 17:13:29, INFO: Square width: 10, circle width: 4
+2024-07-05 17:13:29, INFO: human_num: 5
+2024-07-05 17:13:29, INFO: rotation constraint: 0.5235987755982988
+2024-07-05 17:13:29, INFO: Agent is invisible and has unicycle kinematic constraint

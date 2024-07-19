@@ -1,0 +1,73 @@
+Metadata-Version: 2.1
+Name: socialforce
+Version: 0.1.0
+Summary: Numpy implementation of the Social Force model.
+Home-page: https://github.com/svenkreiss/socialforce
+Author: Sven Kreiss
+Author-email: me@svenkreiss.com
+License: MIT
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Natural Language :: English
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Provides-Extra: test
+Provides-Extra: plot
+
+.. image:: https://travis-ci.org/svenkreiss/socialforce.svg?branch=master
+    :target: https://travis-ci.org/svenkreiss/socialforce
+
+
+Social Force Model
+==================
+
+.. code-block::
+
+    Social force model for pedestrian dynamics
+    Dirk Helbing and Péter Molnár
+    Phys. Rev. E 51, 4282 – Published 1 May 1995
+
+
+Install and Run
+===============
+
+.. code-block:: sh
+
+    # install from PyPI
+    pip install 'socialforce[test,plot]'
+
+    # or install from source
+    pip install -e '.[test,plot]'
+
+    # run linting and tests
+    pylint socialforce
+    pytest tests/*.py
+
+
+Ped-Ped-Space Scenarios
+=======================
+
++----------------------------------------+----------------------------------------+
+| .. image:: docs/separator.gif          | .. image:: docs/gate.gif               |
++----------------------------------------+----------------------------------------+
+| Emergent lane formation with           | Emergent lane formation with           |
+| 30 pedestrians:                        | 60 pedestrians:                        |
+|                                        |                                        |
+| .. image:: docs/walkway_30.gif         | .. image:: docs/walkway_60.gif         |
++----------------------------------------+----------------------------------------+
+
+
+Ped-Ped Scenarios
+=================
+
++----------------------------------------+----------------------------------------+
+| .. image:: docs/crossing.png           | .. image:: docs/narrow_crossing.png    |
++----------------------------------------+----------------------------------------+
+| .. image:: docs/opposing.png           | .. image:: docs/2opposing.png          |
++----------------------------------------+----------------------------------------+

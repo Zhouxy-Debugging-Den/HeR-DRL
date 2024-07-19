@@ -1,0 +1,13 @@
+README.rst
+setup.py
+socialforce/__init__.py
+socialforce/fieldofview.py
+socialforce/potentials.py
+socialforce/show.py
+socialforce/simulator.py
+socialforce/stateutils.py
+socialforce.egg-info/PKG-INFO
+socialforce.egg-info/SOURCES.txt
+socialforce.egg-info/dependency_links.txt
+socialforce.egg-info/requires.txt
+socialforce.egg-info/top_level.txt

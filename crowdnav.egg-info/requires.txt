@@ -1,0 +1,12 @@
+gitpython
+gym==0.18.3
+matplotlib
+numpy==1.21.0
+scipy
+seaborn
+tqdm
+tensorboardX==2.4
+
+[test]
+pylint
+pytest

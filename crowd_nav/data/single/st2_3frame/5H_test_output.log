@@ -1,0 +1,146 @@
+2024-02-08 09:45:30, INFO: Using device: cpu
+2024-02-08 09:45:30, INFO: Loaded RL weights with best VAL
+2024-02-08 09:45:30, INFO: human number: 5
+2024-02-08 09:45:30, INFO: Not randomize human's radius and preferred speed
+2024-02-08 09:45:30, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-02-08 09:45:30, INFO: Square width: 10, circle width: 4
+2024-02-08 09:45:30, INFO: human_num: 5
+2024-02-08 09:45:30, INFO: Query environment: True
+2024-02-08 09:45:30, INFO: self.model:Spatial_Temporal_Transformer(
+  (Embedding): Embedding(
+    (embedding): Linear(in_features=13, out_features=128, bias=True)
+    (dropout): Dropout(p=0.1, inplace=False)
+  )
+  (temporal_encoder): Encoder(
+    (layers): ModuleList(
+      (0): EncoderLayer(
+        (attn_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=128, out_features=384, bias=True)
+          (out): Linear(in_features=128, out_features=128, bias=True)
+          (attn_dropout): Dropout(p=0.1, inplace=False)
+          (proj_dropout): Dropout(p=0.1, inplace=False)
+          (softmax): Softmax(dim=-1)
+          (avgpool): AdaptiveAvgPool1d(output_size=1)
+        )
+        (mlp_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=128, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (act): GELU(approximate='none')
+          (dropout1): Dropout(p=0.1, inplace=False)
+          (dropout2): Dropout(p=0.1, inplace=False)
+        )
+        (drop_path): DropPath()
+      )
+    )
+    (encoder_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+  )
+  (Spatial_encoder): Encoder(
+    (layers): ModuleList(
+      (0): EncoderLayer(
+        (attn_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=128, out_features=384, bias=True)
+          (out): Linear(in_features=128, out_features=128, bias=True)
+          (attn_dropout): Dropout(p=0.1, inplace=False)
+          (proj_dropout): Dropout(p=0.1, inplace=False)
+          (softmax): Softmax(dim=-1)
+          (avgpool): AdaptiveAvgPool1d(output_size=1)
+        )
+        (mlp_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=128, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (act): GELU(approximate='none')
+          (dropout1): Dropout(p=0.1, inplace=False)
+          (dropout2): Dropout(p=0.1, inplace=False)
+        )
+        (drop_path): DropPath()
+      )
+    )
+    (encoder_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+  )
+  (avgpool): AdaptiveAvgPool1d(output_size=1)
+  (value_Linear_1): Linear(in_features=134, out_features=256, bias=True)
+  (act): GELU(approximate='none')
+  (value_Linear_2): Linear(in_features=256, out_features=128, bias=True)
+  (value_Linear_3): Linear(in_features=128, out_features=1, bias=True)
+  (softmax): Softmax(dim=-1)
+)
+2024-02-08 09:45:30, INFO: Policy: st2
+2024-02-08 09:45:31, INFO: rotation constraint: 0.5235987755982988
+2024-02-08 09:45:31, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-02-08 10:58:44, INFO: Using device: cpu
+2024-02-08 10:58:44, INFO: Loaded RL weights with best VAL
+2024-02-08 10:58:44, INFO: human number: 5
+2024-02-08 10:58:44, INFO: Not randomize human's radius and preferred speed
+2024-02-08 10:58:44, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-02-08 10:58:44, INFO: Square width: 10, circle width: 4
+2024-02-08 10:58:44, INFO: human_num: 5
+2024-02-08 10:58:44, INFO: Query environment: True
+2024-02-08 10:58:44, INFO: self.model:Spatial_Temporal_Transformer(
+  (Embedding): Embedding(
+    (embedding): Linear(in_features=13, out_features=128, bias=True)
+    (dropout): Dropout(p=0.1, inplace=False)
+  )
+  (temporal_encoder): Encoder(
+    (layers): ModuleList(
+      (0): EncoderLayer(
+        (attn_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=128, out_features=384, bias=True)
+          (out): Linear(in_features=128, out_features=128, bias=True)
+          (attn_dropout): Dropout(p=0.1, inplace=False)
+          (proj_dropout): Dropout(p=0.1, inplace=False)
+          (softmax): Softmax(dim=-1)
+          (avgpool): AdaptiveAvgPool1d(output_size=1)
+        )
+        (mlp_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=128, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (act): GELU(approximate='none')
+          (dropout1): Dropout(p=0.1, inplace=False)
+          (dropout2): Dropout(p=0.1, inplace=False)
+        )
+        (drop_path): DropPath()
+      )
+    )
+    (encoder_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+  )
+  (Spatial_encoder): Encoder(
+    (layers): ModuleList(
+      (0): EncoderLayer(
+        (attn_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        (attn): Attention(
+          (qkv): Linear(in_features=128, out_features=384, bias=True)
+          (out): Linear(in_features=128, out_features=128, bias=True)
+          (attn_dropout): Dropout(p=0.1, inplace=False)
+          (proj_dropout): Dropout(p=0.1, inplace=False)
+          (softmax): Softmax(dim=-1)
+          (avgpool): AdaptiveAvgPool1d(output_size=1)
+        )
+        (mlp_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+        (mlp): Mlp(
+          (fc1): Linear(in_features=128, out_features=512, bias=True)
+          (fc2): Linear(in_features=512, out_features=128, bias=True)
+          (act): GELU(approximate='none')
+          (dropout1): Dropout(p=0.1, inplace=False)
+          (dropout2): Dropout(p=0.1, inplace=False)
+        )
+        (drop_path): DropPath()
+      )
+    )
+    (encoder_norm): LayerNorm((128,), eps=1e-05, elementwise_affine=True)
+  )
+  (avgpool): AdaptiveAvgPool1d(output_size=1)
+  (value_Linear_1): Linear(in_features=134, out_features=256, bias=True)
+  (act): GELU(approximate='none')
+  (value_Linear_2): Linear(in_features=256, out_features=128, bias=True)
+  (value_Linear_3): Linear(in_features=128, out_features=1, bias=True)
+  (softmax): Softmax(dim=-1)
+)
+2024-02-08 10:58:44, INFO: Policy: st2
+2024-02-08 10:58:44, INFO: rotation constraint: 0.5235987755982988
+2024-02-08 10:58:44, INFO: Agent is invisible and has unicycle kinematic constraint

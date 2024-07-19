@@ -1,0 +1,41 @@
+2024-07-05 16:36:23, INFO: Using device: cpu
+2024-07-05 16:36:23, INFO: Loaded RL weights with best VAL
+2024-07-05 16:36:23, INFO: Query environment: True
+2024-07-05 16:36:23, INFO: Policy: LSTM-RL w/o pairwise interaction module
+2024-07-05 16:36:24, INFO: human number: 5
+2024-07-05 16:36:24, INFO: human policy: orca
+2024-07-05 16:36:24, INFO: other robot:2
+2024-07-05 16:36:24, INFO: Not randomize human's radius and preferred speed
+2024-07-05 16:36:24, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-07-05 16:36:24, INFO: Square width: 10, circle width: 4
+2024-07-05 16:36:24, INFO: human_num: 5
+2024-07-05 16:36:24, INFO: rotation constraint: 0.5235987755982988
+2024-07-05 16:36:24, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-07-05 17:11:00, INFO: Using device: cpu
+2024-07-05 17:11:00, INFO: Using randomseed: 5
+2024-07-05 17:11:00, INFO: Loaded RL weights with best VAL
+2024-07-05 17:11:00, INFO: Query environment: True
+2024-07-05 17:11:00, INFO: Policy: LSTM-RL w/o pairwise interaction module
+2024-07-05 17:11:01, INFO: human number: 5
+2024-07-05 17:11:01, INFO: human policy: orca
+2024-07-05 17:11:01, INFO: other robot:2
+2024-07-05 17:11:01, INFO: Not randomize human's radius and preferred speed
+2024-07-05 17:11:01, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-07-05 17:11:01, INFO: Square width: 10, circle width: 4
+2024-07-05 17:11:01, INFO: human_num: 5
+2024-07-05 17:11:01, INFO: rotation constraint: 0.5235987755982988
+2024-07-05 17:11:01, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-07-05 17:13:51, INFO: Using device: cpu
+2024-07-05 17:13:51, INFO: Using randomseed: 5
+2024-07-05 17:13:51, INFO: Loaded RL weights with best VAL
+2024-07-05 17:13:51, INFO: Query environment: True
+2024-07-05 17:13:51, INFO: Policy: LSTM-RL w/o pairwise interaction module
+2024-07-05 17:13:52, INFO: human number: 5
+2024-07-05 17:13:52, INFO: human policy: orca
+2024-07-05 17:13:52, INFO: other robot:2
+2024-07-05 17:13:52, INFO: Not randomize human's radius and preferred speed
+2024-07-05 17:13:52, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-07-05 17:13:52, INFO: Square width: 10, circle width: 4
+2024-07-05 17:13:52, INFO: human_num: 5
+2024-07-05 17:13:52, INFO: rotation constraint: 0.5235987755982988
+2024-07-05 17:13:52, INFO: Agent is invisible and has unicycle kinematic constraint

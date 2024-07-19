@@ -1,0 +1,630 @@
+2024-05-09 09:43:15, INFO: Using device: cpu
+2024-05-09 09:43:15, INFO: Using randomseed: 5
+2024-05-09 09:43:15, INFO: Loaded RL weights with best VAL
+2024-05-09 09:43:15, INFO: Query environment: True
+2024-05-09 09:43:15, INFO: Similarity_func: embedded_gaussian
+2024-05-09 09:43:15, INFO: Layerwise_graph: True
+2024-05-09 09:43:15, INFO: Skip_connection: False
+2024-05-09 09:43:15, INFO: Number of layers: 2
+2024-05-09 09:43:15, INFO: self.model:ValueNetwork(
+  (gat0): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (gat1): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+    (7): ReLU()
+  )
+)
+2024-05-09 09:43:15, INFO: GCN layers: 2
+2024-05-09 09:43:15, INFO: Policy: sg_dq3n
+2024-05-09 09:43:15, INFO: human number: 5
+2024-05-09 09:43:15, INFO: Not randomize human's radius and preferred speed
+2024-05-09 09:43:15, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-05-09 09:43:15, INFO: Square width: 10, circle width: 4.0
+2024-05-09 09:43:15, INFO: human_num: 5
+2024-05-09 09:43:15, INFO: rotation constraint: 0.5235987755982988
+2024-05-09 09:43:15, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-05-09 11:58:27, INFO: TEST  has success rate: 0.941, collision rate: 0.052, nav time: 10.151, total reward: 1682.2153, average return: 0.6723
+2024-05-09 11:58:27, INFO: Frequency of being in danger: 0.027 and average min separate distance in danger: 0.17
+2024-05-09 11:58:27, INFO: discomfor nums is 1269 and return is 0.6933 and length is 40096
+2024-05-09 11:58:27, INFO: Collision cases: 16 80 90 141 152 162 233 238 239 244 260 303 316 317 320 324 339 341 351 366 406 481 484 543 568 580 597 624 628 635 637 647 662 665 685 703 717 722 759 767 770 799 851 866 871 890 920 923 947 953 955 992
+2024-05-09 11:58:27, INFO: Timeout cases: 298 378 527 617 697 972 981
+2024-05-09 11:58:27, INFO: test case: 10
+2024-05-09 11:58:29, INFO: Using device: cpu
+2024-05-09 11:58:29, INFO: Using randomseed: 1005
+2024-05-09 11:58:29, INFO: Loaded RL weights with best VAL
+2024-05-09 11:58:29, INFO: Query environment: True
+2024-05-09 11:58:29, INFO: Similarity_func: embedded_gaussian
+2024-05-09 11:58:29, INFO: Layerwise_graph: True
+2024-05-09 11:58:29, INFO: Skip_connection: False
+2024-05-09 11:58:29, INFO: Number of layers: 2
+2024-05-09 11:58:29, INFO: self.model:ValueNetwork(
+  (gat0): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (gat1): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+    (7): ReLU()
+  )
+)
+2024-05-09 11:58:29, INFO: GCN layers: 2
+2024-05-09 11:58:29, INFO: Policy: sg_dq3n
+2024-05-09 11:58:29, INFO: human number: 5
+2024-05-09 11:58:29, INFO: Not randomize human's radius and preferred speed
+2024-05-09 11:58:29, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-05-09 11:58:29, INFO: Square width: 10, circle width: 4.0
+2024-05-09 11:58:29, INFO: human_num: 5
+2024-05-09 11:58:29, INFO: rotation constraint: 0.5235987755982988
+2024-05-09 11:58:29, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-05-09 13:41:41, INFO: TEST  has success rate: 0.930, collision rate: 0.064, nav time: 10.168, total reward: 1630.6318, average return: 0.6444
+2024-05-09 13:41:41, INFO: Frequency of being in danger: 0.031 and average min separate distance in danger: 0.16
+2024-05-09 13:41:41, INFO: discomfor nums is 1499 and return is 0.6768 and length is 39793
+2024-05-09 13:41:41, INFO: Collision cases: 3 8 26 30 38 56 57 77 107 120 122 140 141 152 165 184 208 210 233 242 281 284 293 294 305 309 328 337 355 368 376 377 423 459 473 494 506 578 602 609 611 618 620 628 633 738 792 804 816 833 845 850 855 856 868 889 895 902 939 954 964 970 971 999
+2024-05-09 13:41:41, INFO: Timeout cases: 49 132 712 754 936 960
+2024-05-09 13:41:41, INFO: test case: 10
+2024-05-09 13:41:43, INFO: Using device: cpu
+2024-05-09 13:41:43, INFO: Using randomseed: 2005
+2024-05-09 13:41:43, INFO: Loaded RL weights with best VAL
+2024-05-09 13:41:43, INFO: Query environment: True
+2024-05-09 13:41:43, INFO: Similarity_func: embedded_gaussian
+2024-05-09 13:41:43, INFO: Layerwise_graph: True
+2024-05-09 13:41:43, INFO: Skip_connection: False
+2024-05-09 13:41:43, INFO: Number of layers: 2
+2024-05-09 13:41:43, INFO: self.model:ValueNetwork(
+  (gat0): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (gat1): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+    (7): ReLU()
+  )
+)
+2024-05-09 13:41:43, INFO: GCN layers: 2
+2024-05-09 13:41:43, INFO: Policy: sg_dq3n
+2024-05-09 13:41:43, INFO: human number: 5
+2024-05-09 13:41:43, INFO: Not randomize human's radius and preferred speed
+2024-05-09 13:41:43, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-05-09 13:41:43, INFO: Square width: 10, circle width: 4.0
+2024-05-09 13:41:43, INFO: human_num: 5
+2024-05-09 13:41:43, INFO: rotation constraint: 0.5235987755982988
+2024-05-09 13:41:43, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-05-09 14:30:06, INFO: TEST  has success rate: 0.938, collision rate: 0.055, nav time: 10.301, total reward: 1666.6032, average return: 0.6651
+2024-05-09 14:30:06, INFO: Frequency of being in danger: 0.033 and average min separate distance in danger: 0.16
+2024-05-09 14:30:06, INFO: discomfor nums is 1580 and return is 0.6828 and length is 40623
+2024-05-09 14:30:06, INFO: Collision cases: 45 65 72 85 87 89 93 100 109 110 148 171 179 198 209 244 276 309 316 318 367 374 376 380 388 416 430 453 484 530 535 590 605 623 626 639 645 664 672 688 690 704 737 757 760 776 777 812 871 873 881 921 982 985 993
+2024-05-09 14:30:06, INFO: Timeout cases: 193 247 258 496 687 697 933
+2024-05-09 14:30:06, INFO: test case: 10
+2024-05-09 14:30:08, INFO: Using device: cpu
+2024-05-09 14:30:08, INFO: Using randomseed: 3005
+2024-05-09 14:30:08, INFO: Loaded RL weights with best VAL
+2024-05-09 14:30:08, INFO: Query environment: True
+2024-05-09 14:30:08, INFO: Similarity_func: embedded_gaussian
+2024-05-09 14:30:08, INFO: Layerwise_graph: True
+2024-05-09 14:30:08, INFO: Skip_connection: False
+2024-05-09 14:30:08, INFO: Number of layers: 2
+2024-05-09 14:30:08, INFO: self.model:ValueNetwork(
+  (gat0): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (gat1): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+    (7): ReLU()
+  )
+)
+2024-05-09 14:30:08, INFO: GCN layers: 2
+2024-05-09 14:30:08, INFO: Policy: sg_dq3n
+2024-05-09 14:30:08, INFO: human number: 5
+2024-05-09 14:30:08, INFO: Not randomize human's radius and preferred speed
+2024-05-09 14:30:08, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-05-09 14:30:08, INFO: Square width: 10, circle width: 4.0
+2024-05-09 14:30:08, INFO: human_num: 5
+2024-05-09 14:30:08, INFO: rotation constraint: 0.5235987755982988
+2024-05-09 14:30:08, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-05-09 15:17:31, INFO: TEST  has success rate: 0.925, collision rate: 0.070, nav time: 10.267, total reward: 1639.6238, average return: 0.6507
+2024-05-09 15:17:31, INFO: Frequency of being in danger: 0.030 and average min separate distance in danger: 0.16
+2024-05-09 15:17:31, INFO: discomfor nums is 1418 and return is 0.6808 and length is 39977
+2024-05-09 15:17:31, INFO: Collision cases: 12 16 21 79 111 122 129 139 176 214 221 236 259 269 286 291 292 310 328 336 346 351 360 363 367 370 402 408 413 419 420 486 501 516 521 528 531 553 558 564 576 582 652 655 664 696 711 727 742 745 749 797 800 803 808 821 833 834 866 868 896 907 925 932 935 945 954 964 977 979
+2024-05-09 15:17:31, INFO: Timeout cases: 152 515 675 955 969
+2024-05-09 15:17:32, INFO: test case: 10
+2024-05-09 15:17:33, INFO: Using device: cpu
+2024-05-09 15:17:33, INFO: Using randomseed: 4005
+2024-05-09 15:17:33, INFO: Loaded RL weights with best VAL
+2024-05-09 15:17:33, INFO: Query environment: True
+2024-05-09 15:17:33, INFO: Similarity_func: embedded_gaussian
+2024-05-09 15:17:33, INFO: Layerwise_graph: True
+2024-05-09 15:17:33, INFO: Skip_connection: False
+2024-05-09 15:17:33, INFO: Number of layers: 2
+2024-05-09 15:17:33, INFO: self.model:ValueNetwork(
+  (gat0): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (gat1): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+    (7): ReLU()
+  )
+)
+2024-05-09 15:17:33, INFO: GCN layers: 2
+2024-05-09 15:17:33, INFO: Policy: sg_dq3n
+2024-05-09 15:17:33, INFO: human number: 5
+2024-05-09 15:17:33, INFO: Not randomize human's radius and preferred speed
+2024-05-09 15:17:33, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-05-09 15:17:33, INFO: Square width: 10, circle width: 4.0
+2024-05-09 15:17:33, INFO: human_num: 5
+2024-05-09 15:17:33, INFO: rotation constraint: 0.5235987755982988
+2024-05-09 15:17:33, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-05-09 16:27:02, INFO: TEST  has success rate: 0.928, collision rate: 0.065, nav time: 10.155, total reward: 1644.7001, average return: 0.6517
+2024-05-09 16:27:02, INFO: Frequency of being in danger: 0.031 and average min separate distance in danger: 0.16
+2024-05-09 16:27:02, INFO: discomfor nums is 1445 and return is 0.6797 and length is 39806
+2024-05-09 16:27:02, INFO: Collision cases: 8 22 30 47 90 127 129 144 148 156 172 197 198 200 224 226 259 269 277 278 286 294 312 314 328 365 374 377 384 403 406 429 432 439 445 448 457 468 475 506 568 599 608 613 631 637 654 672 681 708 716 733 743 747 757 763 853 868 875 889 896 952 976 997 999
+2024-05-09 16:27:02, INFO: Timeout cases: 343 509 542 573 915 954 969
+2024-05-09 16:27:03, INFO: test case: 10
+2024-05-09 16:27:05, INFO: Using device: cpu
+2024-05-09 16:27:05, INFO: Using randomseed: 5005
+2024-05-09 16:27:05, INFO: Loaded RL weights with best VAL
+2024-05-09 16:27:05, INFO: Query environment: True
+2024-05-09 16:27:05, INFO: Similarity_func: embedded_gaussian
+2024-05-09 16:27:05, INFO: Layerwise_graph: True
+2024-05-09 16:27:05, INFO: Skip_connection: False
+2024-05-09 16:27:05, INFO: Number of layers: 2
+2024-05-09 16:27:05, INFO: self.model:ValueNetwork(
+  (gat0): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (gat1): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+    (7): ReLU()
+  )
+)
+2024-05-09 16:27:05, INFO: GCN layers: 2
+2024-05-09 16:27:05, INFO: Policy: sg_dq3n
+2024-05-09 16:27:05, INFO: human number: 5
+2024-05-09 16:27:05, INFO: Not randomize human's radius and preferred speed
+2024-05-09 16:27:05, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-05-09 16:27:05, INFO: Square width: 10, circle width: 4.0
+2024-05-09 16:27:05, INFO: human_num: 5
+2024-05-09 16:27:05, INFO: rotation constraint: 0.5235987755982988
+2024-05-09 16:27:05, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-05-09 17:30:01, INFO: TEST  has success rate: 0.940, collision rate: 0.047, nav time: 10.186, total reward: 1676.4446, average return: 0.6720
+2024-05-09 17:30:01, INFO: Frequency of being in danger: 0.032 and average min separate distance in danger: 0.17
+2024-05-09 17:30:01, INFO: discomfor nums is 1470 and return is 0.6768 and length is 40800
+2024-05-09 17:30:01, INFO: Collision cases: 0 54 68 76 81 94 108 110 137 157 160 242 269 284 364 390 415 440 523 527 536 563 587 592 603 607 610 612 626 631 658 670 706 738 777 781 797 833 839 865 866 873 904 930 937 970 997
+2024-05-09 17:30:01, INFO: Timeout cases: 14 28 141 318 343 352 535 616 628 632 731 791 888
+2024-05-09 17:30:01, INFO: test case: 10
+2024-05-09 17:30:03, INFO: Using device: cpu
+2024-05-09 17:30:03, INFO: Using randomseed: 6005
+2024-05-09 17:30:03, INFO: Loaded RL weights with best VAL
+2024-05-09 17:30:03, INFO: Query environment: True
+2024-05-09 17:30:03, INFO: Similarity_func: embedded_gaussian
+2024-05-09 17:30:03, INFO: Layerwise_graph: True
+2024-05-09 17:30:03, INFO: Skip_connection: False
+2024-05-09 17:30:03, INFO: Number of layers: 2
+2024-05-09 17:30:03, INFO: self.model:ValueNetwork(
+  (gat0): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (gat1): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+    (7): ReLU()
+  )
+)
+2024-05-09 17:30:03, INFO: GCN layers: 2
+2024-05-09 17:30:03, INFO: Policy: sg_dq3n
+2024-05-09 17:30:03, INFO: human number: 5
+2024-05-09 17:30:03, INFO: Not randomize human's radius and preferred speed
+2024-05-09 17:30:03, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-05-09 17:30:03, INFO: Square width: 10, circle width: 4.0
+2024-05-09 17:30:03, INFO: human_num: 5
+2024-05-09 17:30:03, INFO: rotation constraint: 0.5235987755982988
+2024-05-09 17:30:03, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-05-09 18:17:43, INFO: TEST  has success rate: 0.938, collision rate: 0.055, nav time: 10.205, total reward: 1672.0513, average return: 0.6678
+2024-05-09 18:17:43, INFO: Frequency of being in danger: 0.031 and average min separate distance in danger: 0.17
+2024-05-09 18:17:43, INFO: discomfor nums is 1399 and return is 0.6892 and length is 40219
+2024-05-09 18:17:43, INFO: Collision cases: 6 35 52 76 80 86 88 105 127 131 132 150 151 169 170 181 260 267 268 284 293 314 318 381 393 440 448 459 471 477 494 507 513 515 532 557 565 578 595 685 723 736 792 803 814 821 822 856 871 877 935 947 959 960 972
+2024-05-09 18:17:43, INFO: Timeout cases: 32 209 343 417 619 648 793
+2024-05-09 18:17:44, INFO: test case: 10
+2024-05-09 18:17:45, INFO: Using device: cpu
+2024-05-09 18:17:45, INFO: Using randomseed: 7005
+2024-05-09 18:17:45, INFO: Loaded RL weights with best VAL
+2024-05-09 18:17:45, INFO: Query environment: True
+2024-05-09 18:17:45, INFO: Similarity_func: embedded_gaussian
+2024-05-09 18:17:45, INFO: Layerwise_graph: True
+2024-05-09 18:17:45, INFO: Skip_connection: False
+2024-05-09 18:17:45, INFO: Number of layers: 2
+2024-05-09 18:17:45, INFO: self.model:ValueNetwork(
+  (gat0): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (gat1): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+    (7): ReLU()
+  )
+)
+2024-05-09 18:17:45, INFO: GCN layers: 2
+2024-05-09 18:17:45, INFO: Policy: sg_dq3n
+2024-05-09 18:17:45, INFO: human number: 5
+2024-05-09 18:17:45, INFO: Not randomize human's radius and preferred speed
+2024-05-09 18:17:45, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-05-09 18:17:45, INFO: Square width: 10, circle width: 4.0
+2024-05-09 18:17:45, INFO: human_num: 5
+2024-05-09 18:17:45, INFO: rotation constraint: 0.5235987755982988
+2024-05-09 18:17:45, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-05-09 19:04:43, INFO: TEST  has success rate: 0.942, collision rate: 0.055, nav time: 10.169, total reward: 1669.4242, average return: 0.6667
+2024-05-09 19:04:43, INFO: Frequency of being in danger: 0.030 and average min separate distance in danger: 0.16
+2024-05-09 19:04:43, INFO: discomfor nums is 1406 and return is 0.6953 and length is 39747
+2024-05-09 19:04:43, INFO: Collision cases: 72 85 104 118 169 179 182 183 186 190 204 228 286 302 313 315 363 370 391 398 415 422 433 459 469 476 484 491 492 558 605 635 682 683 690 692 727 758 762 765 773 787 789 817 820 821 830 864 907 908 916 930 937 978 981
+2024-05-09 19:04:43, INFO: Timeout cases: 62 76 637
+2024-05-09 19:04:43, INFO: test case: 10
+2024-05-09 19:04:45, INFO: Using device: cpu
+2024-05-09 19:04:45, INFO: Using randomseed: 8005
+2024-05-09 19:04:45, INFO: Loaded RL weights with best VAL
+2024-05-09 19:04:45, INFO: Query environment: True
+2024-05-09 19:04:45, INFO: Similarity_func: embedded_gaussian
+2024-05-09 19:04:45, INFO: Layerwise_graph: True
+2024-05-09 19:04:45, INFO: Skip_connection: False
+2024-05-09 19:04:45, INFO: Number of layers: 2
+2024-05-09 19:04:45, INFO: self.model:ValueNetwork(
+  (gat0): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (gat1): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+    (7): ReLU()
+  )
+)
+2024-05-09 19:04:45, INFO: GCN layers: 2
+2024-05-09 19:04:45, INFO: Policy: sg_dq3n
+2024-05-09 19:04:45, INFO: human number: 5
+2024-05-09 19:04:45, INFO: Not randomize human's radius and preferred speed
+2024-05-09 19:04:45, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-05-09 19:04:45, INFO: Square width: 10, circle width: 4.0
+2024-05-09 19:04:45, INFO: human_num: 5
+2024-05-09 19:04:45, INFO: rotation constraint: 0.5235987755982988
+2024-05-09 19:04:45, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-05-09 19:51:04, INFO: TEST  has success rate: 0.931, collision rate: 0.066, nav time: 10.163, total reward: 1644.7321, average return: 0.6512
+2024-05-09 19:51:04, INFO: Frequency of being in danger: 0.031 and average min separate distance in danger: 0.16
+2024-05-09 19:51:04, INFO: discomfor nums is 1498 and return is 0.6847 and length is 39561
+2024-05-09 19:51:04, INFO: Collision cases: 24 25 60 71 75 89 100 119 139 145 162 206 216 218 224 229 231 236 271 291 297 300 327 331 349 350 353 354 359 375 378 397 440 449 450 455 459 465 525 531 540 542 544 555 563 585 595 613 615 630 638 711 717 758 767 791 800 810 824 832 840 868 961 968 980 985
+2024-05-09 19:51:04, INFO: Timeout cases: 113 386 441
+2024-05-09 19:51:05, INFO: test case: 10
+2024-05-09 19:51:06, INFO: Using device: cpu
+2024-05-09 19:51:06, INFO: Using randomseed: 9005
+2024-05-09 19:51:06, INFO: Loaded RL weights with best VAL
+2024-05-09 19:51:06, INFO: Query environment: True
+2024-05-09 19:51:06, INFO: Similarity_func: embedded_gaussian
+2024-05-09 19:51:06, INFO: Layerwise_graph: True
+2024-05-09 19:51:06, INFO: Skip_connection: False
+2024-05-09 19:51:06, INFO: Number of layers: 2
+2024-05-09 19:51:06, INFO: self.model:ValueNetwork(
+  (gat0): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (gat1): GraphAttentionLayer(
+    (w_a): Sequential(
+      (0): Linear(in_features=64, out_features=64, bias=True)
+      (1): ReLU()
+      (2): Linear(in_features=64, out_features=1, bias=True)
+    )
+    (leakyrelu): LeakyReLU(negative_slope=0.04)
+  )
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+    (7): ReLU()
+  )
+)
+2024-05-09 19:51:06, INFO: GCN layers: 2
+2024-05-09 19:51:06, INFO: Policy: sg_dq3n
+2024-05-09 19:51:06, INFO: human number: 5
+2024-05-09 19:51:06, INFO: Not randomize human's radius and preferred speed
+2024-05-09 19:51:06, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-05-09 19:51:06, INFO: Square width: 10, circle width: 4.0
+2024-05-09 19:51:06, INFO: human_num: 5
+2024-05-09 19:51:06, INFO: rotation constraint: 0.5235987755982988
+2024-05-09 19:51:06, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-05-09 20:18:26, INFO: TEST  has success rate: 0.927, collision rate: 0.068, nav time: 10.142, total reward: 1648.4439, average return: 0.6555
+2024-05-09 20:18:26, INFO: Frequency of being in danger: 0.031 and average min separate distance in danger: 0.16
+2024-05-09 20:18:26, INFO: discomfor nums is 1452 and return is 0.6859 and length is 39585
+2024-05-09 20:18:26, INFO: Collision cases: 9 21 51 90 110 111 164 180 182 206 215 249 257 262 265 269 272 276 279 293 323 327 350 378 388 392 394 401 425 429 435 456 464 478 492 503 563 621 634 639 657 670 674 689 703 706 734 747 761 762 769 770 774 784 787 799 803 806 840 862 876 885 897 968 969 970 982 989
+2024-05-09 20:18:26, INFO: Timeout cases: 16 133 271 340 739
+2024-05-09 20:18:26, INFO: test case: 10

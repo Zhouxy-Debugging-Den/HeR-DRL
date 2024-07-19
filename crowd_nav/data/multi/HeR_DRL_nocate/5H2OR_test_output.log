@@ -1,0 +1,189 @@
+2024-07-05 17:11:25, INFO: Using device: cpu
+2024-07-05 17:11:25, INFO: Using randomseed: 5
+2024-07-05 17:11:25, INFO: Loaded RL weights with best VAL
+2024-07-05 17:11:25, INFO: Query environment: True
+2024-07-05 17:11:25, INFO: self.model:ValueNetwork(
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=8, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_o): Sequential(
+    (0): Linear(in_features=8, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (conv): GraphModule(
+    (conv1): ModuleDict(
+      (robot__sence__human): GraphConv(-1, 32)
+      (human__sence__robot): GraphConv(-1, 32)
+      (other_robot__sence__robot): GraphConv(-1, 32)
+      (robot__sence__other_robot): GraphConv(-1, 32)
+      (other_robot__sence__human): GraphConv(-1, 32)
+      (human__sence__other_robot): GraphConv(-1, 32)
+      (human__affect__human): GraphConv(-1, 32)
+      (other_robot__affect__other_robot): GraphConv(-1, 32)
+    )
+    (conv2): ModuleDict(
+      (robot__sence__human): GraphConv(-1, 32)
+      (human__sence__robot): GraphConv(-1, 32)
+      (other_robot__sence__robot): GraphConv(-1, 32)
+      (robot__sence__other_robot): GraphConv(-1, 32)
+      (other_robot__sence__human): GraphConv(-1, 32)
+      (human__sence__other_robot): GraphConv(-1, 32)
+      (human__affect__human): GraphConv(-1, 32)
+      (other_robot__affect__other_robot): GraphConv(-1, 32)
+    )
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+  )
+)
+2024-07-05 17:11:25, INFO: GCN layers: 2
+2024-07-05 17:11:25, INFO: Policy: HeR-DRL
+2024-07-05 17:12:04, INFO: Using device: cpu
+2024-07-05 17:12:04, INFO: Using randomseed: 5
+2024-07-05 17:12:04, INFO: Loaded RL weights with best VAL
+2024-07-05 17:12:04, INFO: Query environment: True
+2024-07-05 17:12:04, INFO: self.model:ValueNetwork(
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_o): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (conv): GraphModule(
+    (conv1): ModuleDict(
+      (robot__sence__human): GraphConv(-1, 32)
+      (human__sence__robot): GraphConv(-1, 32)
+      (other_robot__sence__robot): GraphConv(-1, 32)
+      (robot__sence__other_robot): GraphConv(-1, 32)
+      (other_robot__sence__human): GraphConv(-1, 32)
+      (human__sence__other_robot): GraphConv(-1, 32)
+      (human__affect__human): GraphConv(-1, 32)
+      (other_robot__affect__other_robot): GraphConv(-1, 32)
+    )
+    (conv2): ModuleDict(
+      (robot__sence__human): GraphConv(-1, 32)
+      (human__sence__robot): GraphConv(-1, 32)
+      (other_robot__sence__robot): GraphConv(-1, 32)
+      (robot__sence__other_robot): GraphConv(-1, 32)
+      (other_robot__sence__human): GraphConv(-1, 32)
+      (human__sence__other_robot): GraphConv(-1, 32)
+      (human__affect__human): GraphConv(-1, 32)
+      (other_robot__affect__other_robot): GraphConv(-1, 32)
+    )
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+  )
+)
+2024-07-05 17:12:04, INFO: GCN layers: 2
+2024-07-05 17:12:04, INFO: Policy: HeR-DRL
+2024-07-05 17:12:04, INFO: human number: 5
+2024-07-05 17:12:04, INFO: human policy: orca
+2024-07-05 17:12:04, INFO: other robot:2
+2024-07-05 17:12:04, INFO: Not randomize human's radius and preferred speed
+2024-07-05 17:12:04, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-07-05 17:12:04, INFO: Square width: 10, circle width: 4
+2024-07-05 17:12:04, INFO: human_num: 5
+2024-07-05 17:12:04, INFO: rotation constraint: 0.5235987755982988
+2024-07-05 17:12:04, INFO: Agent is invisible and has unicycle kinematic constraint
+2024-07-05 17:12:10, INFO: Using device: cpu
+2024-07-05 17:12:10, INFO: Using randomseed: 1005
+2024-07-05 17:12:10, INFO: Loaded RL weights with best VAL
+2024-07-05 17:12:11, INFO: Query environment: True
+2024-07-05 17:12:11, INFO: self.model:ValueNetwork(
+  (w_r): Sequential(
+    (0): Linear(in_features=6, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_h): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (w_o): Sequential(
+    (0): Linear(in_features=7, out_features=64, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=64, out_features=32, bias=True)
+    (3): ReLU()
+  )
+  (conv): GraphModule(
+    (conv1): ModuleDict(
+      (robot__sence__human): GraphConv(-1, 32)
+      (human__sence__robot): GraphConv(-1, 32)
+      (other_robot__sence__robot): GraphConv(-1, 32)
+      (robot__sence__other_robot): GraphConv(-1, 32)
+      (other_robot__sence__human): GraphConv(-1, 32)
+      (human__sence__other_robot): GraphConv(-1, 32)
+      (human__affect__human): GraphConv(-1, 32)
+      (other_robot__affect__other_robot): GraphConv(-1, 32)
+    )
+    (conv2): ModuleDict(
+      (robot__sence__human): GraphConv(-1, 32)
+      (human__sence__robot): GraphConv(-1, 32)
+      (other_robot__sence__robot): GraphConv(-1, 32)
+      (robot__sence__other_robot): GraphConv(-1, 32)
+      (other_robot__sence__human): GraphConv(-1, 32)
+      (human__sence__other_robot): GraphConv(-1, 32)
+      (human__affect__human): GraphConv(-1, 32)
+      (other_robot__affect__other_robot): GraphConv(-1, 32)
+    )
+  )
+  (value_net): Sequential(
+    (0): Linear(in_features=32, out_features=150, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=150, out_features=100, bias=True)
+    (3): ReLU()
+    (4): Linear(in_features=100, out_features=100, bias=True)
+    (5): ReLU()
+    (6): Linear(in_features=100, out_features=1, bias=True)
+  )
+)
+2024-07-05 17:12:11, INFO: GCN layers: 2
+2024-07-05 17:12:11, INFO: Policy: HeR-DRL
+2024-07-05 17:12:11, INFO: human number: 5
+2024-07-05 17:12:11, INFO: human policy: orca
+2024-07-05 17:12:11, INFO: other robot:2
+2024-07-05 17:12:11, INFO: Not randomize human's radius and preferred speed
+2024-07-05 17:12:11, INFO: Training simulation: circle_crossing, test simulation: circle_crossing
+2024-07-05 17:12:11, INFO: Square width: 10, circle width: 4
+2024-07-05 17:12:11, INFO: human_num: 5
+2024-07-05 17:12:11, INFO: rotation constraint: 0.5235987755982988
+2024-07-05 17:12:11, INFO: Agent is invisible and has unicycle kinematic constraint
