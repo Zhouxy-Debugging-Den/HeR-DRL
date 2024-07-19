@@ -41,5 +41,6 @@ cd crowd_nav
 cd crowd_nav
 . scripts/test/complex_ablation_test_1000.sh
 ```
-
+### Note
+The training code will be released later
 
