@@ -3,7 +3,7 @@ for human_num in 5;do
     python simple_test.py -m data/single/LSTM_RL --human_num $human_num --randomseed $randome_seed
     python simple_test.py -m data/single/SARL --human_num $human_num --randomseed $randome_seed
     python simple_test.py -m data/single/HoR_DRL --human_num $human_num --randomseed $randome_seed
-    python simple_test.py -m data/single/HeR_DRL --human_num $human_num --randomseed $randome_seed
+#    python simple_test.py -m data/single/HeR_DRL --human_num $human_num --randomseed $randome_seed
     python simple_test.py -m data/single/GAT_DRL --human_num $human_num --randomseed $randome_seed
     python simple_test_st.py -m data/single/st2_3frame --human_num $human_num --randomseed $randome_seed
   done
