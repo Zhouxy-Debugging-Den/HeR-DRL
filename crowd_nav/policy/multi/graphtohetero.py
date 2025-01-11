@@ -6,7 +6,7 @@ from crowd_nav.policy.multi.multi_human_rl import MultiHumanRL
 from torch_geometric.nn import GraphConv,to_hetero
 from torch_geometric.data import HeteroData,Batch
 """
-本策略主要构建的是所有agent双向连接的同构图
+This policy mainly constructs a heterogeneous graph with bidirectional connections between all agents.
 """
 class Graphgnn(torch.nn.Module):
     def __init__(self,hidden_channels,out_channels):
@@ -39,19 +39,14 @@ class ValueNetwork(nn.Module):
         self.other_robot_num=other_robot_num
 
         data = HeteroData()
-        # 初始化节点特征
+        # Initialize node features
         data['robot'].x = torch.zeros((1, wr_dims[-1]))
         # data['robot'].num_nodes=1
         data['human'].x = torch.zeros((self.human_num, wr_dims[-1]))
 
-        data = HeteroData()
-        # 初始化节点特征
-        data['robot'].x = torch.zeros((1, wr_dims[-1]))
-        # data['robot'].num_nodes=1
-        data['human'].x = torch.zeros((self.human_num, wr_dims[-1]))
         # data['human'].num_nodes = 5
         data['other_robot'].x = torch.zeros((self.other_robot_num, wr_dims[-1]))
-        # 基础调参-----
+
         hidden_channels = 32
         # output_channels = 32
 
@@ -73,8 +68,7 @@ class ValueNetwork(nn.Module):
 
         # self.value_net = mlp(self.self_state_dim+final_state_dim, planning_dims)
         self.value_net = mlp(final_state_dim, planning_dims)
-        # edge_index这个是作为GraphConv网络的输入
-        # 机器人到行人之间的edge_index
+
     def robot_to_human_edge_index(self, human_num):
         edge_index = torch.zeros([2, human_num], dtype=torch.long, device=self.device)
         for i in range(human_num):
@@ -109,7 +103,7 @@ class ValueNetwork(nn.Module):
                 k += 1
         return edge_index
 
-    # 行人到行人的edge_index
+
     def human_to_human_edge_index(self, human_num):
         d1 = human_num ** 2 - human_num
         edge_index = torch.zeros([2, d1], dtype=torch.long, device=self.device)
@@ -168,7 +162,7 @@ class ValueNetwork(nn.Module):
         agent_number = X.size()[1]
         data = HeteroData()
         data_list = []
-        # 初始化节点特征
+        # Initialize node features
         data['robot'].x = self_state_embedings.unsqueeze(1)[0, :, :]
         # data['robot'].num_nodes=1
         data['human'].x = human_state_embedings[0, :, :]
@@ -199,7 +193,6 @@ class ValueNetwork(nn.Module):
         h = self.conv(batch_data.x_dict, batch_data.edge_index_dict)
         # do planning using only the final layer feature of the agent
         h_final = h['robot']
-        # todo: 可变动1-聚合邻居信息，但是没有添加自身信息(这里的聚合方式可以多样化)
         # joint_state = torch.cat([self_state, h_final], dim=1)
         # value = self.value_net(joint_state)
         value = self.value_net(h_final)

@@ -13,7 +13,7 @@ from crowd_sim.envs.utils.state_multi import JointState
 
 
 """
-本策略主要构建的是所有agent双向连接的同构图
+This strategy mainly constructs an homogeneous graph with bidirectional connections between all agents.
 """
 class Graphgnn(torch.nn.Module):
     def __init__(self,in_channels,hidden_channels,out_channels):
@@ -35,7 +35,6 @@ class Graphgnn(torch.nn.Module):
 
 
     def forward(self, x, edge_index,dropout):
-        # 这里其实应该传入edge_weight，没有传入，那么就是按照全是1进行计算的
         multi_gnn = False
         if multi_gnn:
             x = F.relu(self.conv1(x, edge_index))
@@ -78,7 +77,6 @@ class ValueNetwork(nn.Module):
         self.conv = Graphgnn(X_dim, gcn2_w1_dim, final_state_dim)
         # self.value_net = mlp(self.self_state_dim+final_state_dim, planning_dims)
         self.value_net = mlp(final_state_dim, planning_dims)
-    # edge_index这个是作为GraphConv网络的输入
     def edge_index(self,agent_number):
         d1=agent_number**2-agent_number
         edge_index = torch.zeros([2,d1],dtype=torch.long,device=self.device)
@@ -112,7 +110,8 @@ class ValueNetwork(nn.Module):
         # compute edge_index
         agent_number = X.size()[1]
         data=Data()
-        # 初始化节点特征
+
+        # Initialize node features
 
         data.x=X[0,:,:]
         data.edge_index=self.edge_index(agent_number)

@@ -91,7 +91,6 @@ class CADRL(Policy):
     def propagate_more(self, state, action):
         """
         propogate the state for two steps to see further.
-        将状态传播两步以进一步了解
         """
         if isinstance(state, ObservableState):
             # propagate state of humans
@@ -227,7 +226,7 @@ class CADRL(Policy):
 
         if self.phase == 'train':
             self.last_state = self.transform(state)
-        # 这里其实返回那个动作索引无关，为了让程序通过，先设置为1
+        # It doesn't matter which action index is returned here. To make the program pass, set it to 1 first.
         return max_action,1
 
     def select_greedy_action(self, self_state):
@@ -289,8 +288,7 @@ class CADRL(Policy):
 
         # dg, v_pref, theta, radius, vx, vy, px1, py1, vx1, vy1, radius1, da, radius_sum
         # 0     1      2       3      4   5   6    7    8    9     10      11     12
-        # 距离终点距离，v_pref, 偏角，半径，转换到agent-centric坐标系的vx，转换到agent-centric坐标系的vy，agent和机器人的相对坐标x,agent和机器人的相对坐标y,
-        # 转换到agent-centric坐标系的vx1,转换到agent-centric坐标系的vy1，agent的半径，agent与机器人的距离，半径之和
+
         batch = state.shape[0]
         dx = (state[:, 5] - state[:, 0]).reshape((batch, -1))
         dy = (state[:, 6] - state[:, 1]).reshape((batch, -1))

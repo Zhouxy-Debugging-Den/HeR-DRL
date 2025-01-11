@@ -28,12 +28,12 @@ class Agent(object):
         self.vy = None
         self.theta = None
         self.time_step = None
-    # 打印自身信息(是否可见、运动学特点)
+    # rint self information (visibility, kinematic characteristics)
     def print_info(self):
         logging.info('Agent is {} and has {} kinematic constraint'.format(
             'visible' if self.visible else 'invisible', self.kinematics))
 
-    # 设置策略，策略运动学对应于agent运动学
+    # Set the policy, the policy kinematics corresponds to the agent kinematics
     def set_policy(self, policy):
 
         if self.time_step is None:
@@ -42,7 +42,7 @@ class Agent(object):
         self.policy = policy
         self.kinematics = policy.kinematics
 
-    # 随机采样agent的半径和v_pref属性为了某一确定的分布
+    # Randomly sample the agent's radius and v_pref properties for a certain distribution
     def sample_random_attributes(self):
         """
         Sample agent radius and v_pref attribute from certain distribution
@@ -51,7 +51,7 @@ class Agent(object):
         self.v_pref = np.random.uniform(0.5, 1.5)
         self.radius = np.random.uniform(0.3, 0.5)
 
-    # 设置信息
+    # Setting information
     def set(self, px, py, gx, gy, vx, vy, theta, radius=None, v_pref=None):
         self.px = px
         self.py = py
@@ -67,11 +67,11 @@ class Agent(object):
         if v_pref is not None:
             self.v_pref = v_pref
 
-    # 得到可观测状态
+    # Get observable status
     def get_observable_state(self):
         return ObservableState(self.px, self.py, self.vx, self.vy, self.radius,self.multi)
 
-    # 得到下一个可观测状态
+    # Get the next observable state
     def get_next_observable_state(self, action):
         self.check_validity(action)
         pos = self.compute_position(action, self.time_step)
@@ -84,38 +84,38 @@ class Agent(object):
             next_vy = action.v * np.sin(self.theta)
         return ObservableState(next_px, next_py, next_vx, next_vy, self.radius,self.multi)
 
-    # 得到全部状态
+    # Get all status
     def get_full_state(self):
         return FullState(self.px, self.py, self.vx, self.vy, self.radius,self.multi,
                          self.gx, self.gy, self.v_pref, self.theta)
 
-    # 得到位置
+    # Get location
     def get_position(self):
         return self.px, self.py
 
-    # 设置位置
+    # Setting the location
     def set_position(self, position):
         self.px = position[0]
         self.py = position[1]
 
-    # 得到目标位置
+    # Get the target location
     def get_goal_position(self):
         return self.gx, self.gy
 
-    # 得到开始位置
+    # Get the starting position
     def get_start_position(self):
         return self.sx, self.sy
 
-    # 得到速度
+    # Get speed
     def get_velocity(self):
         return self.vx, self.vy
 
-    # 设置速度
+    # Setting the speed
     def set_velocity(self, velocity):
         self.vx = velocity[0]
         self.vy = velocity[1]
 
-    # agent收到观测，返回action
+    # The agent receives the observation and returns the action
     @abc.abstractmethod
     def act(self, ob):
         """
@@ -124,14 +124,14 @@ class Agent(object):
         """
         return
 
-    # 检查合法性
+    # Check legality
     def check_validity(self, action):
         if self.kinematics == 'holonomic':
             assert isinstance(action, ActionXY)
         else:
             assert isinstance(action, ActionRot)
 
-    # 计算下一个时间步位置
+    # Calculate the next time step position
     def compute_position(self, action, delta_t):
         self.check_validity(action)
         if delta_t is None:
@@ -146,7 +146,7 @@ class Agent(object):
 
         return px, py
 
-    # 执行动作，并且更新状态
+    # Execute actions and update status
     def step(self, action):
         """
         Perform an action and update the state
@@ -162,7 +162,7 @@ class Agent(object):
             self.vx = action.v * np.cos(self.theta)
             self.vy = action.v * np.sin(self.theta)
 
-    # 抵达目的地
+    # Arrival at destination
     def reached_destination(self):
         return norm(np.array(self.get_position()) - np.array(self.get_goal_position())) < self.radius
 

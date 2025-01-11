@@ -75,7 +75,6 @@ class MultiHumanRL(CADRL):
                 if batch_input_tensor is None:
                     batch_input_tensor = rotated_batch_input
                 else:
-                    # 这里batch_input_tensor是按照时间顺序在第二个维度进行排序的
                     batch_input_tensor = torch.cat([batch_input_tensor, rotated_batch_input], dim=0)
 
             next_value = self.model(batch_input_tensor).squeeze(1)

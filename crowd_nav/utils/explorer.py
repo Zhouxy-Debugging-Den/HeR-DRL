@@ -40,12 +40,12 @@ class Explorer(object):
         collision_cases = []
         timeout_cases = []
         discomfort_nums = []
-        # 添加进度条
+        # Adding a progress bar
         if phase in ['test', 'val']:
             pbar = tqdm(total=k)
         else:
             pbar = None
-        # 探索过程
+        # Exploration process
         for i in range(k):
             ob = self.env.reset(phase)
             done = False
@@ -74,11 +74,8 @@ class Explorer(object):
                     dones.append(done)
                 rewards.append(reward)
                 if isinstance(info, Discomfort):
-                    # 多少步是不舒服
                     discomfort += 1
-                    # 单步最小HR距离
                     min_dist.append(info.min_dist)
-                    # 和多少行人产生了不舒服
                     num_discom = info.num
                 num_discoms.append(num_discom)
             # add the terminal state
@@ -149,7 +146,6 @@ class Explorer(object):
                   'avg return':[average(average_returns)],'total reward':[sum(cumulative_rewards)]
                   }
             df=pd.DataFrame(data)
-            #todo: 差传达路径，以及优化记录内容
             test_doc_dir=model_dir+'/test.xlsx'
             if os.path.exists(test_doc_dir):
                 wb = load_workbook(test_doc_dir)
@@ -182,7 +178,7 @@ class Explorer(object):
             value = torch.Tensor([value]).to(self.device)
             reward = torch.Tensor([rewards[i]]).to(self.device)
             done = torch.Tensor([dones[i]]).to(self.device)
-            # 这里要推送的state要包含几帧内容
+            # The state to be pushed here should contain several frames of content
             self.memory.push((state, value, done, reward, next_state))
 
     def log(self, tag_prefix, global_step):

@@ -8,14 +8,13 @@ from crowd_sim.envs.utils.state_multi import JointState
 class MultiHumanRL(CADRL):
     def __init__(self):
         super().__init__()
-        self.state_rotated=True # 手动修改
+        self.state_rotated=True
 
     def predict(self, state,droupout):
         """
         A base class for all methods that takes pairwise joint state as input to value network.
         The input to the value network is always of shape (batch_size, # humans, rotated joint state length)
 
-        这里只是接收droupout，并不使用，这样是为了给robot_multi做个铺垫
         """
         if self.phase is None or self.device is None:
             raise AttributeError('Phase, device attributes have to be set!')
@@ -62,7 +61,6 @@ class MultiHumanRL(CADRL):
                     batch_input = self.rotate(batch_next_states).unsqueeze(0)
                 else:
                     batch_input=batch_next_states.unsqueeze(0)
-                # with_om部分
                 if self.with_om:
                     if occupancy_maps is None:
                         occupancy_maps = self.build_occupancy_maps(next_agent_states).unsqueeze(0)

@@ -75,7 +75,7 @@ class CrowdSim_Hetero(gym.Env):
         self.human_starts = []
         self.human_goals = []
 
-        # 动作空间: 速度，朝向
+        # Action space: speed, direction
         self.action_space = spaces.Box(
             low=np.array([0, -np.pi]),
             high=np.array([1, np.pi]),
@@ -125,12 +125,12 @@ class CrowdSim_Hetero(gym.Env):
         logging.info('Training simulation: {}, test simulation: {}'.format(self.train_val_scenario, self.test_scenario))
         logging.info('Square width: {}, circle width: {}'.format(self.square_width, self.circle_radius))
 
-    # 设置机器人(动作空间)
+    # Setting up the robot (action space)
     def set_robot(self, robot):
         self.robot = robot
 
         if self.robot.kinematics == "holonomic":
-            # 动作空间: 速度，朝向
+            # Action space: speed, direction
             self.action_space = spaces.Box(
                 low=np.array([0, -np.pi]),
                 high=np.array([1, np.pi]),
@@ -143,7 +143,6 @@ class CrowdSim_Hetero(gym.Env):
                 dtype=np.float32
             )
         logging.info('rotation constraint: {}'.format(self.robot.rotation_constraint))
-    # 生成行人，针对是否是square、是否是non_stop做出四种分析
     def generate_human(self, human=None, non_stop=False, square=False):
         if human is None:
             human = Human(self.config, 'humans')
@@ -167,7 +166,7 @@ class CrowdSim_Hetero(gym.Env):
                 if not collide:
                     break
             human.start_pos.append((px, py))
-            # 行人设置px,py,-px,-py和vx,vy,theta
+            # Pedestrian settings px, py, -px, -py and vx, vy, theta
             human.set(px, py, -px, -py, 0, 0, 0)
         elif square is False and non_stop is True:
             while True:
@@ -268,7 +267,7 @@ class CrowdSim_Hetero(gym.Env):
                 if not collide:
                     break
             other_robot.start_pos.append((px, py))
-            # 行人设置px,py,-px,-py和vx,vy,theta
+            # Pedestrian settings px, py, -px, -py and vx, vy, theta
             other_robot.set(px, py, -px, -py, 0, 0, 0)
         else:
             while True:
@@ -294,7 +293,7 @@ class CrowdSim_Hetero(gym.Env):
             other_robot.set(px, py, gx, gy, 0, 0, 0)
         return other_robot
 
-    # 设置px,py,gx,gy,vx,vy,theta对于机器人和行人
+    # Set px,py,gx,gy,vx,vy,theta for robots and pedestrians
     def reset(self, phase='test', test_case=None):
         """
         Set px, py, gx, gy, vx, vy, theta for robot and humans
@@ -388,16 +387,17 @@ class CrowdSim_Hetero(gym.Env):
             raise NotImplementedError
 
         return ob
-    # 给动作，向后看一下状态变化
+    # Give the action and look back at the state changes
     def onestep_lookahead(self, action):
         return self.step(action, update=False)
 
-    # 更新动作，计算所有agent的动作，检查碰撞，返回元祖
+    # Update actions, calculate actions for all agents, check for collisions, return ancestor
     def step(self, action, update=True):
         """
         Compute actions for all agents, detect collision, update environment and return (ob, reward, done, info)
         """
-        # 如果中心规划，则中心规划器统一获取状态，然后规划动作；否则将每一个行人获取观测，计算动作
+        # If the central plan is used, the central planner obtains the state uniformly and then plans the action;
+        # otherwise, each pedestrian is observed and the action is calculated.
         if self.centralized_planning:
             agent_states = [human.get_full_state() for human in self.humans]
             if self.robot.visible:
@@ -414,16 +414,19 @@ class CrowdSim_Hetero(gym.Env):
             for other_robot in self.other_robots:
                 ob = self.compute_observation_for(other_robot)
                 other_robot_actions.append(other_robot.act(ob))
-        # 设置一些权重
+        # Set some weights
         weight_goal = self.goal_factor
         weight_safe = self.discomfort_penalty_factor
         weight_terminal = 1.0
         re_collision = self.collision_penalty
         re_arrival = self.success_reward
         """
-        碰撞检测，主要包括机器人-行人、机器人-other机器人、行人-行人、行人-other机器人、other机器人-other机器人
+        Collision detection, mainly including controlled_robot-human, controlled_robot-env_robot, 
+        human-human, human-env_robot, env_robot-env_robot
         """
-        # collision detection，碰撞检测，计算robot和每个human的相对速度，然后计算一个时间步之后的位置
+        # collision detection，
+        # calculate the relative speed of the robot and each human,
+        # and then calculate the position after one time step
         dmin = float('inf')
         d_other_robot_min=float('inf')
         collision = False
@@ -459,7 +462,7 @@ class CrowdSim_Hetero(gym.Env):
             # if dis_end < self.discomfort_dist:
             #     penalty_end = dis_end - self.discomfort_dist
             # safety_penalty = safety_penalty + (penalty_end - penalty_begin)
-        # 机器人和其他机器人之间的碰撞检测
+        # controlled_robot-env_robot
         for i, other_robot in enumerate(self.other_robots):
             px = other_robot.px - self.robot.px
             py = other_robot.py - self.robot.py
@@ -480,7 +483,6 @@ class CrowdSim_Hetero(gym.Env):
                 d_other_robot_min = closest_dist
 
         # collision detection between humans
-        # 行人之间的碰撞检测
         human_num = len(self.humans)
         for i in range(human_num):
             for j in range(i + 1, human_num):
@@ -490,7 +492,7 @@ class CrowdSim_Hetero(gym.Env):
                 if dist < 0:
                     # detect collision but don't take humans' collision into account
                     logging.debug('Collision happens between humans in step()')
-        # 行人和other_robot之间的碰撞
+        # human-env_robot
         other_robot_num=len(self.other_robots)
         for i in range(other_robot_num):
             for j in range(human_num):
@@ -501,7 +503,7 @@ class CrowdSim_Hetero(gym.Env):
                     # detect collision but don't take humans' collision into account
                     logging.debug('Collision happens between humans and other robot in step()')
 
-        # other_robot之间的碰撞检测
+        # env_robot-env_robot
         if other_robot_num>1:
             for i in range(other_robot_num):
                 for j in range(i + 1, other_robot_num):
@@ -511,7 +513,7 @@ class CrowdSim_Hetero(gym.Env):
                     if dist < 0:
                         # detect collision but don't take humans' collision into account
                         logging.debug('Collision happens between other robots in step()')
-        # check if reaching the goal，判断是否抵达目标
+        # check if reaching the goal
         end_position = np.array(self.robot.compute_position(action, self.time_step))
         cur_position = np.array((self.robot.px, self.robot.py))
         goal_position = np.array(self.robot.get_goal_position())
@@ -573,7 +575,6 @@ class CrowdSim_Hetero(gym.Env):
                         else:
                             self.generate_human(human, non_stop=True, square=True)
                             human.reach_count = 0
-            # 机器人更新
             for other_robot, action in zip(self.other_robots, other_robot_actions):
                 other_robot.step(action)
                 if self.nonstop_other_robot and other_robot.reached_destination():
@@ -609,7 +610,7 @@ class CrowdSim_Hetero(gym.Env):
 
         return ob, reward, done, info
 
-    # 根据当前状态，根据行人的策略，获取下一步的动作
+    # According to the current state and the pedestrian's strategy, get the next action
     def peds_predict(self, agent_states, robot_state):
         if self.robot.visible:
             agent_states.append(robot_state)
@@ -617,7 +618,7 @@ class CrowdSim_Hetero(gym.Env):
         else:
             human_actions = self.centralized_planner.predict(agent_states)
         return human_actions
-    # 为某一个agent计算状态观测
+    # Compute state observations for an agent
     def compute_observation_for(self, agent):
         if agent == self.robot:
             ob = []
@@ -645,7 +646,7 @@ class CrowdSim_Hetero(gym.Env):
             ob += [other_robot.get_observable_state() for other_robot in self.other_robots if other_robot != agent]
             ob += [self.robot.get_observable_state()]
         return ob
-    # 可视化
+    # Visualization
     def render(self, mode='video', output_file=None):
         from matplotlib import animation
         import matplotlib.pyplot as plt
@@ -674,10 +675,10 @@ class CrowdSim_Hetero(gym.Env):
             # other_robot_colors = [cmap(i) for i in range(len(self.other_robots))]
             other_robot_colors = [cmap(40) for i in range(len(self.other_robots))]
             """
-            1. 起点和终点可视化
+            1. Start and end point visualization
             """
 
-            # 这里主要记录了可视化中心机器人的起点和终点
+            # This mainly records the starting and ending points of the visualization center robot
             robot_goal = mlines.Line2D([self.robot.get_goal_position()[0]], [self.robot.get_goal_position()[1]],
                                        color='r',
                                        marker='*', linestyle='None', markersize=15)
@@ -685,7 +686,8 @@ class CrowdSim_Hetero(gym.Env):
             test_start = mlines.Line2D([self.robot.sx], [self.robot.sy], color='r', marker='o',
                                        linestyle='None', markersize=15)
             ax.add_artist(test_start)
-            # 这里主要记录了可视化行人的起点和终点，我认为要区别对待机器人和行人
+            # Here we mainly record the starting and ending points of the visualized humans.
+            # I think we should treat robots and humans differently.
             for i in range(len(self.humans)):
                 human = self.humans[i]
                 human_goal = mlines.Line2D([human.get_goal_position()[0]], [human.get_goal_position()[1]],
@@ -693,7 +695,6 @@ class CrowdSim_Hetero(gym.Env):
                                            marker='*', linestyle='None', markersize=15)
                 ax.add_artist(human_goal)
                 for j in range(len(human.start_pos)):
-                    # 这里有疑问，为什么start_pos有的有2个，有的只有1个，第一个是三角，第二个是方块
                     pos = human.start_pos[j]
                     if j ==0:
                         test_start = mlines.Line2D([pos[0]], [pos[1]], color=human_colors[i], marker='o',
@@ -702,7 +703,8 @@ class CrowdSim_Hetero(gym.Env):
                         test_start = mlines.Line2D([pos[0]], [pos[1]], color=human_colors[i], marker='s',
                                                    linestyle='None', markersize=15)
                     ax.add_artist(test_start)
-            # 这里主要记录了可视化其他机器人的起点和终点，我认为要区别对待机器人和行人
+            # Here we mainly record the starting and ending points of env_robots for visualization.
+            # I think we should treat robots and pedestrians differently.
             for i in range(len(self.other_robots)):
                 other_robot = self.other_robots[i]
                 other_robot_goal = mlines.Line2D([other_robot.get_goal_position()[0]], [other_robot.get_goal_position()[1]],
@@ -710,7 +712,6 @@ class CrowdSim_Hetero(gym.Env):
                                            marker='*', linestyle='None', markersize=15)
                 ax.add_artist(other_robot_goal)
                 for j in range(len(other_robot.start_pos)):
-                    # 这里有疑问，为什么start_pos有的有2个，有的只有1个，第一个是三角，第二个是方块
                     pos = other_robot.start_pos[j]
                     if j ==0:
                         test_start = mlines.Line2D([pos[0]], [pos[1]], color=other_robot_colors[i], marker='o',
@@ -719,7 +720,7 @@ class CrowdSim_Hetero(gym.Env):
                         test_start = mlines.Line2D([pos[0]], [pos[1]], color=other_robot_colors[i], marker='s',
                                                    linestyle='None', markersize=15)
                     ax.add_artist(test_start)
-            # 记录一下所有agent对应状态的运动过程
+            # Record the movement process of all agents in corresponding states
             robot_positions = [self.states[i][0].position for i in range(len(self.states))]
             human_positions = [[self.states[i][1][j].position for j in range(len(self.humans))]
                                for i in range(len(self.states))]
@@ -741,32 +742,17 @@ class CrowdSim_Hetero(gym.Env):
                     for other_robot in other_robots:
                         ax.add_artist(other_robot)
 
-                # add time annotation，添加时间步注释
+                # add time annotation
                 global_time = k * self.time_step
                 if global_time % 3 == 0 or k == len(self.states) - 1:
-                    # 一起打印时间步
+                    # Print time steps
                     agents = humans + [robot]+other_robots
                     times = [plt.text(agents[i].center[0]+0, agents[i].center[1]+0,
                                       '{:.1f}'.format(global_time),
                                       fontweight='semibold',color='black', fontsize=14) for i in range(self.human_num + self.other_robot_num+1)]
-                    # 分着打印时间步
-                    # robot
-                    # times = plt.text(robot.center[0] + 0, robot.center[1] + 0,
-                    #                   '{:.1f}'.format(global_time),
-                    #                   fontweight='semibold', color='black', fontsize=15)
-                    # # human
-                    # times = [plt.text(humans[i].center[0] + 0, humans[i].center[1] + 0,
-                    #                   '{:.1f}'.format(global_time),
-                    #                   fontweight='semibold', color=human_colors[i], fontsize=15) for i in
-                    #          range(self.human_num )]
-                    # # other robot
-                    # times = [plt.text(other_robots[i].center[0] + 0, other_robots[i].center[1] + 0,
-                    #                   '{:.1f}'.format(global_time),
-                    #                   fontweight='semibold', color=other_robot_colors[i], fontsize=15) for i in
-                    #          range(self.other_robot_num)]
                     for time in times:
                        ax.add_artist(time)
-                # 绘制轨迹
+                # Drawing tracks
                 if k!=0:
                     for i in range(self.other_robot_num):
                         plt.plot([self.states[k - 1][3][i].px,self.states[k][3][i].px ],
@@ -779,22 +765,11 @@ class CrowdSim_Hetero(gym.Env):
                     plt.plot([self.states[k - 1][0].px, self.states[k][0].px],
                              [self.states[k - 1][0].py, self.states[k][0].py],
                              lw=1.5, color='red')
-                # 添加运动过程中的方向信息
+                # Add direction information during movement
                 if k != 0 and k%12==0:
-                    #todo: 将箭头去掉
-                    # nav_direction = plt.arrow(self.states[k - 1][0].px, self.states[k - 1][0].py,
-                    #                           self.states[k][0].px - self.states[k - 1][0].px,
-                    #                           self.states[k][0].py - self.states[k - 1][0].py,
-                    #                         length_includes_head=True, head_width=0.08, lw=0.8, color=robot_color)
-                    # human_directions = [plt.arrow(self.states[k - 1][1][i].px, self.states[k - 1][1][i].py, self.states[k][1][i].px - self.states[k - 1][1][i].px,self.states[k][1][i].py - self.states[k - 1][1][i].py,
-                    #           length_includes_head=True, head_width=0.08, lw=0.5,
-                    #           color=human_colors[i]) for i in range(self.human_num)]
-                    # other_robot_directions = [plt.arrow(self.states[k - 1][3][i].px, self.states[k - 1][3][i].py, self.states[k][3][i].px - self.states[k - 1][3][i].px,
-                    #                                     self.states[k][3][i].py - self.states[k - 1][3][i].py,
-                    #           length_includes_head=True, head_width=0.08, lw=0.5,
-                    #           color=other_robot_colors[i]) for i in range(self.other_robot_num)]
 
-                    # 指向下一个部分
+
+                    # Point to the next section
                     nav_direction = plt.arrow(self.states[k][0].px, self.states[k][0].py,
                                               self.states[k+1][0].px - self.states[k][0].px,
                                               self.states[k+1][0].py - self.states[k][0].py,
@@ -826,7 +801,6 @@ class CrowdSim_Hetero(gym.Env):
                 plt.savefig(output_file,dpi=300)
             # plt.show()
         elif mode == 'video':
-            # 以下都是其plt构图的基本代码
             fig, ax = plt.subplots(figsize=(7, 7))
             ax.tick_params(labelsize=16)
             ax.set_xlim(-self.panel_width/2, self.panel_width/2)

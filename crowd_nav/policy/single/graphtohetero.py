@@ -65,17 +65,15 @@ class ValueNetwork(nn.Module):
         self.device=device
         self.human_num=human_num
         data = HeteroData()
-        # 初始化节点特征
+        # Initialize node features
         data['robot'].x = torch.zeros((1, wr_dims[-1]))
         # data['robot'].num_nodes=1
         data['human'].x = torch.zeros((self.human_num, wr_dims[-1]))
         # data['human'].num_nodes = 5
 
-        # 基础调参-----
         hidden_channels = 50
         output_channels = 32
 
-        # ---------
         data['robot', 'sence', 'human'].edge_index = self.robot_to_human_edge_index(self.human_num)
         data['human', 'sence', 'robot'].edge_index = self.human_to_robot_edge_index(self.human_num)
         data['human', 'affect', 'human'].edge_index = self.human_to_human_edge_index(self.human_num)
@@ -85,7 +83,6 @@ class ValueNetwork(nn.Module):
             self.linear_mapping= nn.Linear(2*hidden_channels,output_channels)
         # self.value_net = mlp(gcn2_w1_dim+self_state_dim, planning_dims)
         self.value_net = mlp(gcn2_w1_dim, planning_dims)
-    # 机器人到行人之间的edge_index
     def robot_to_human_edge_index(self,human_num):
         edge_index = torch.zeros([2,human_num],dtype=torch.long,device=self.device)
         for i in range(human_num):
@@ -131,7 +128,7 @@ class ValueNetwork(nn.Module):
         agent_num = X.size()[1]
         human_num=agent_num-1
         data=HeteroData()
-        # 初始化节点特征
+        # Initialize node features
         data['robot'].x=self_state_embedings.unsqueeze(1)[0,:,:]
         # data['robot'].num_nodes=1
         data['human'].x=human_state_embedings[0,:,:]

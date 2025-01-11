@@ -98,7 +98,6 @@ class CADRL(Policy):
     def propagate_more(self, state, action):
         """
         propogate the state for two steps to see further.
-        将状态传播两步以进一步了解
         """
         if isinstance(state, ObservableState):
             # propagate state of humans
@@ -293,7 +292,6 @@ class CADRL(Policy):
         """
         # 'px', 'py', 'vx', 'vy', 'radius', 'gx', 'gy', 'v_pref', 'theta','self multi' 'px1', 'py1', 'vx1', 'vy1', 'radius1','agent multi'
         #  0     1      2     3      4        5     6      7         8       9              10     11     12     13       14           15
-        #  这里保留了agent_multi要用
         batch = state.shape[0]
         dx = (state[:, 5] - state[:, 0]).reshape((batch, -1))
         dy = (state[:, 6] - state[:, 1]).reshape((batch, -1))

@@ -15,7 +15,7 @@ import sys
 
 
 def main(args):
-    # configure logging and device,配置logging和device
+    # configure logging and device
     # output_str=str(args.human_num)+'H_test_output_'+time.strftime("%Y%m%d_%H_%M_%S", time.localtime(time.time()))+'.log'
     output_str = str(args.human_num) + 'H_test_output' + '.log'
     log_file = os.path.join(args.model_dir, output_str)
@@ -46,7 +46,7 @@ def main(args):
                 model_weights = os.path.join(args.model_dir, sorted(os.listdir(args.model_dir))[-1])
             logging.info('Loaded RL weights')
         else:
-            # 加载最佳验证参数
+            # Loading optimal validation parameters
             model_weights = os.path.join(args.model_dir, 'best_val.pth')
             logging.info('Loaded RL weights with best VAL')
 
@@ -59,10 +59,9 @@ def main(args):
     config = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(config)
 
-    # configure policy,配置策略
+    # configure policy
     policy_config = config.PolicyConfig(args.debug)
     policy = policy_factory[policy_config.name]()
-    # 这里定义奖励估计器，实际我们只是使用环境自带的奖励(这部分是否可以注释掉)
     # reward_estimator = Reward_Estimator()
     # env_config = config.EnvConfig(args.debug)
     # reward_estimator.configure(env_config)
@@ -70,7 +69,7 @@ def main(args):
 
 
 
-    # configure environment，配置环境
+    # configure environment
     env_config = config.EnvConfig(args.debug)
 
     if args.human_num is not None:
@@ -80,7 +79,7 @@ def main(args):
     env.configure(env_config)
     logging.info('human_num: %d',args.human_num)
 
-    # 策略加载模型
+    # policy loading model
     policy.configure(policy_config, device,env_config.sim.human_num)
     if policy.trainable:
         if args.model_dir is None:
@@ -117,8 +116,8 @@ def main(args):
         logging.info('orca agent buffer: %f', robot.policy.safety_space)
 
     policy.set_env(env)
+    # print environmental information such as the number of pedestrians
     robot.print_info()
-    # 打印行人数量等环境信息
 
 
     if args.visualize:
@@ -132,7 +131,6 @@ def main(args):
         states = []
         while not done:
             num_discom = 0
-            # 存在问题，就是其中states其实是tensor
             if len(states) >= 2:
                 for i in range(2):
                     ob_frame.append(states[len(states) - 2 + i])
@@ -163,7 +161,6 @@ def main(args):
                 args.test_case) + "_" + policy.name + ".png"
             env.render('traj', vedio_file)
         else:
-            # 下面针对vedio需要进行好好捋一捋
             if args.video_dir is not None:
                 if policy_config.name == 'gcn':
                     args.video_file = os.path.join(args.video_dir, policy_config.name + '_' + policy_config.gcn.similarity_function)

@@ -6,7 +6,7 @@ from crowd_nav.policy.single.multi_human_rl import MultiHumanRL
 from torch_geometric.nn import GraphConv,GCNConv
 from torch_geometric.data import Data
 """
-本策略主要构建的是所有agent双向连接的同构图
+This strategy mainly constructs an isomorphic graph with bidirectional connections between all agents.
 """
 
 class Graphgnn(torch.nn.Module):
@@ -39,7 +39,6 @@ class ValueNetwork(nn.Module):
         self.conv=Graphgnn(X_dim,gcn2_w1_dim,final_state_dim)
         # self.value_net = mlp(self.self_state_dim+final_state_dim, planning_dims)
         self.value_net = mlp(final_state_dim, planning_dims)
-    # edge_index这个是作为GraphConv网络的输入
     def edge_index(self,agent_number):
         d1=agent_number**2-agent_number
         edge_index = torch.zeros([2,d1],dtype=torch.long,device=self.device)

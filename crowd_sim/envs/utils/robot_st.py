@@ -10,7 +10,6 @@ class Robot(Agent):
     def act(self, ob):
         if self.policy is None:
             raise AttributeError('Policy attribute has to be set!')
-        # 改成将其中的状态分别取出，然后组成新的state列表
         states=[]
         for i in range(len(ob)):
             states.append(JointState(self.get_full_state(), ob[i]))

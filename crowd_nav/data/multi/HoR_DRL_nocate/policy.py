@@ -12,9 +12,6 @@ from crowd_sim.envs.utils.state_multi import JointState
 
 
 
-"""
-本策略主要构建的是所有agent双向连接的同构图
-"""
 class Graphgnn(torch.nn.Module):
     def __init__(self,in_channels,hidden_channels,out_channels):
         super(Graphgnn, self).__init__()
@@ -31,11 +28,7 @@ class Graphgnn(torch.nn.Module):
         else:
             self.conv2 = GraphConv(in_channels, out_channels)
 
-
-
-
     def forward(self, x, edge_index,dropout):
-        # 这里其实应该传入edge_weight，没有传入，那么就是按照全是1进行计算的
         multi_gnn = False
         if multi_gnn:
             x = F.relu(self.conv1(x, edge_index))
@@ -78,7 +71,7 @@ class ValueNetwork(nn.Module):
         self.conv = Graphgnn(X_dim, gcn2_w1_dim, final_state_dim)
         # self.value_net = mlp(self.self_state_dim+final_state_dim, planning_dims)
         self.value_net = mlp(final_state_dim, planning_dims)
-    # edge_index这个是作为GraphConv网络的输入
+    # edge_index is used as the input of the GraphConv network
     def edge_index(self,agent_number):
         d1=agent_number**2-agent_number
         edge_index = torch.zeros([2,d1],dtype=torch.long,device=self.device)
@@ -100,7 +93,6 @@ class ValueNetwork(nn.Module):
             # lengths = torch.IntTensor([state.size()[1]])
 
         self_state = state[:, 0, :self.self_state_dim]
-        # 这里进行修改，其中不包括最后一个维度，查看一下训练结果
         human_states = state[:, 0:self.human_num, self.self_state_dim:]
         other_states=state[:,self.human_num:,self.self_state_dim:]
 
@@ -112,8 +104,8 @@ class ValueNetwork(nn.Module):
         # compute edge_index
         agent_number = X.size()[1]
         data=Data()
-        # 初始化节点特征
 
+        # Initialize node features
         data.x=X[0,:,:]
         data.edge_index=self.edge_index(agent_number)
 

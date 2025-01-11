@@ -8,7 +8,7 @@ from crowd_sim.envs.utils.state import JointState
 class MultiHumanRL(CADRL):
     def __init__(self):
         super().__init__()
-    # 思考多帧部分这里该如何修改，最后到model的部分
+
     def predict(self, state):
         """
         A base class for all methods that takes pairwise joint state as input to value network.
@@ -19,7 +19,7 @@ class MultiHumanRL(CADRL):
             raise AttributeError('Phase, device attributes have to be set!')
         if self.phase == 'train' and self.epsilon is None:
             raise AttributeError('Epsilon attribute has to be set in training phase')
-        # 判断state_list中最新的state是否抵达目的地
+        # Determine whether the latest state in state_list has reached the destination
         if self.reach_destination(state[len(state)-1]):
             return ActionXY(0, 0) if self.kinematics == 'holonomic' else ActionRot(0, 0)
         if self.action_space is None:

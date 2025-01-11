@@ -72,7 +72,7 @@ class CrowdSim(gym.Env):
         self.human_starts = []
         self.human_goals = []
 
-        # 动作空间: 速度，朝向
+        # Action space: speed, direction
         self.action_space = spaces.Box(
             low=np.array([0, -np.pi]),
             high=np.array([1, np.pi]),
@@ -122,7 +122,7 @@ class CrowdSim(gym.Env):
         self.robot = robot
 
         if self.robot.kinematics == "holonomic":
-            # 动作空间: 速度，朝向
+            # Action space: speed, direction
             self.action_space = spaces.Box(
                 low=np.array([0, -np.pi]),
                 high=np.array([1, np.pi]),
@@ -576,7 +576,6 @@ class CrowdSim(gym.Env):
                 global_time = k * self.time_step
                 if global_time % 3 == 0 or k == len(self.states) - 1:
                     agents = humans + [robot]
-                    #todo:修改字体大小
                     times = [plt.text(agents[i].center[0]+0.05, agents[i].center[1]+0.05,
                                       '{:.1f}'.format(global_time),
                                       fontweight='semibold',color='black', fontsize=14) for i in range(self.human_num + 1)]
@@ -763,23 +762,6 @@ class CrowdSim(gym.Env):
                 for arrow in arrows:
                     ax.add_artist(arrow)
                 global_step = 0
-
-            # if len(self.trajs) != 0:
-            #     human_future_positions = []
-            #     human_future_circles = []
-            #     for traj in self.trajs:
-            #         human_future_position = [[tensor_to_joint_state(traj[step+1][0]).human_states[i].position
-            #                                   for step in range(self.robot.policy.planning_depth)]
-            #                                  for i in range(self.human_num)]
-            #         human_future_positions.append(human_future_position)
-            #
-            #     for i in range(self.human_num):
-            #         circles = []
-            #         for j in range(self.robot.policy.planning_depth):
-            #             circle = plt.Circle(human_future_positions[0][i][j], self.humans[0].radius/(1.7+j), fill=False, color=cmap(i))
-            #             ax.add_artist(circle)
-            #             circles.append(circle)
-            #         human_future_circles.append(circles)
 
             def update(frame_num):
                 nonlocal global_step

@@ -15,7 +15,7 @@ import sys
 
 
 def main(args):
-    # configure logging and device,配置logging和device
+    # configure logging and device
     # output_str=str(args.human_num)+'H_test_output_'+time.strftime("%Y%m%d_%H_%M_%S", time.localtime(time.time()))+'.log'
     output_str = str(args.human_num) + 'H_test_output' + '.log'
     log_file = os.path.join(args.model_dir, output_str)
@@ -38,17 +38,13 @@ def main(args):
             model_weights = os.path.join(args.model_dir, 'il_model.pth')
             logging.info('Loaded IL weights')
         elif args.rl:
-            # if os.path.exists(os.path.join(args.model_dir, 'resumed_rl_model.pth')):
-            #     model_weights = os.path.join(args.model_dir, 'resumed_rl_model.pth')
-            # else:
-            #     print(os.listdir(args.model_dir))
-            #     model_weights = os.path.join(args.model_dir, sorted(os.listdir(args.model_dir))[-1])
-            # 加载哪一个model
+
+            # Which model to load
             weigt_name='rl_model_'+str(args.model_pth)+'.pth'
             model_weights = os.path.join(args.model_dir, weigt_name)
             logging.info('Loaded RL weights')
         else:
-            # 加载最佳验证参数
+            # Loading optimal validation parameters
             model_weights = os.path.join(args.model_dir, 'best_val.pth')
             logging.info('Loaded RL weights with best VAL')
 
@@ -61,7 +57,7 @@ def main(args):
     config = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(config)
 
-    # configure policy,配置策略
+    # configure policy
     policy_config = config.PolicyConfig(args.debug)
     policy_file = os.path.join(args.model_dir, 'policy.py')
     spec_policy = importlib.util.spec_from_file_location('policy_ob', policy_file)
@@ -71,14 +67,14 @@ def main(args):
     spec_policy.loader.exec_module(policy_ob)
     policy = eval('policy_ob.' + policy_config.name + '()')
 
-    # 策略加载模型
+    # Strategy loading model
     policy.configure(policy_config, device)
     if policy.trainable:
         if args.model_dir is None:
             parser.error('Trainable policy must be specified with a model weights directory')
         policy.load_model(model_weights)
 
-    # configure environment，配置环境
+    # configure environment
     env_config = config.EnvConfig(args.debug)
 
     if args.human_num is not None:
@@ -120,8 +116,8 @@ def main(args):
         logging.info('orca agent buffer: %f', robot.policy.safety_space)
 
     policy.set_env(env)
+    # Print environmental information such as the number of pedestrians
     robot.print_info()
-    # 打印行人数量等环境信息
     if args.visualize:
         rewards = []
         actions = []
@@ -147,7 +143,6 @@ def main(args):
                 args.test_case) + "_" + policy.name + ".png"
             env.render('traj', vedio_file)
         else:
-            # 下面针对vedio需要进行好好捋一捋
             if args.video_dir is not None:
                 if policy_config.name == 'gcn':
                     args.video_file = os.path.join(args.video_dir, policy_config.name + '_' + policy_config.gcn.similarity_function)

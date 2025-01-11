@@ -3,7 +3,7 @@ from torch.utils.data import Dataset
 
 class ReplayMemory(Dataset):
     """
-    存储的内容，是list，list里面是state, value, done, reward, next_state
+    The stored content is a list, which contains state, value, done, reward, next_state
     """
     def __init__(self, capacity):
         self.capacity = capacity
@@ -33,7 +33,7 @@ class ReplayMemory(Dataset):
 
 class ReplayMemory_hetero(Dataset):
     """
-    存储在memory的数据都是什么样
+    What is the data stored in memory?
 
 
     """
@@ -44,10 +44,10 @@ class ReplayMemory_hetero(Dataset):
 
     def push(self, item):
         if len(self.memory) < self.position + 1:
-            # 没装满就继续装
+            # If it's not full, keep filling it.
             self.memory.append(item)
         else:
-            # 替换旧经验
+            # Replace old experience
             self.memory[self.position] = item
         self.position = (self.position + 1) % self.capacity
 

@@ -87,19 +87,5 @@ class LstmRL(MultiHumanRL):
         logging.info('Policy: {}LSTM-RL {} pairwise interaction module'.format(
             'OM-' if self.with_om else '', 'w/' if with_interaction_module else 'w/o'))
 
-    # def predict(self, state):
-    #     """
-    #     Input state is the joint state of robot concatenated with the observable state of other agents
-    #
-    #     To predict the best action, agent samples actions and propagates one step to see how good the next state is
-    #     thus the reward function is needed
-    #
-    #     """
-    #
-    #     def dist(human):
-    #         # sort human order by decreasing distance to the robot
-    #         return np.linalg.norm(np.array(human.position) - np.array(state.robot_state.position))
-    #
-    #     state.human_states = sorted(state.human_states, key=dist, reverse=True)
-    #     return super().predict(state)
+
 

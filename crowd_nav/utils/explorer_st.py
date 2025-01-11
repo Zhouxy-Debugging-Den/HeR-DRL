@@ -60,7 +60,6 @@ class Explorer(object):
             num_discoms =[]
             while not done:
                 num_discom = 0
-                # 存在问题，就是其中states其实是tensor
                 if len(states)>=self.st_frame_nums-1:
                     for i in range(self.st_frame_nums-1):
                         ob_frame.append(states[len(states)-self.st_frame_nums+1+i])
@@ -73,7 +72,8 @@ class Explorer(object):
                     ob_frame.append(ob)
                 action, action_index = self.robot.act(ob_frame)
                 ob_frame=[]
-                # 下面ob是执行action之后的行人观测，下面last_state是上面robot.act中记录的最后一个状态，ob在其下一帧
+                # The following ob is the pedestrian observation after executing action,
+                # and the following last_state is the last state recorded in robot.act above.
                 ob, reward, done, info = self.env.step(action)
                 states.append(self.robot.policy.last_state)
                 states_tensor.append(self.robot.policy.last_state_tensor)
@@ -195,7 +195,7 @@ class Explorer(object):
             else:
                 state_input= None
                 next_state_input=None
-                # 这里要推送的state要包含几帧内容
+                # The state to be pushed here should contain several frames of content
                 if i>=self.st_frame_nums-1:
                     for j in range(self.st_frame_nums):
                         if state_input is None:

@@ -15,7 +15,7 @@ import sys
 import time
 
 def main(args):
-    # configure logging and device,配置logging和device
+    # configure logging and device
     # output_str=str(args.human_num)+'H_test_output_'+time.strftime("%Y%m%d_%H_%M_%S", time.localtime(time.time()))+'.log'
     output_str = str(args.human_num) + 'H'+str(args.other_robot_num)+'OR_test_output' + '.log'
     log_file = os.path.join(args.model_dir, output_str)
@@ -48,7 +48,7 @@ def main(args):
             model_weights = os.path.join(args.model_dir, weigt_name)
             logging.info('Loaded RL weights')
         else:
-            # 加载最佳验证参数
+            # Loading optimal validation parameters
             model_weights = os.path.join(args.model_dir, 'best_val.pth')
             # model_weights = os.path.join(args.model_dir, 'rl_model_0.pth')
             logging.info('Loaded RL weights with best VAL')
@@ -62,7 +62,7 @@ def main(args):
     config = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(config)
 
-    # configure policy,配置策略
+    # configure policy
     policy_config = config.PolicyConfig(args.debug)
     policy_file = os.path.join(args.model_dir, 'policy.py')
     spec_policy = importlib.util.spec_from_file_location('policy_ob', policy_file)
@@ -70,23 +70,23 @@ def main(args):
         parser.error('policy file not found.')
     policy_ob = importlib.util.module_from_spec(spec_policy)
     spec_policy.loader.exec_module(policy_ob)
-    policy = eval('policy_ob.' + policy_config.name + '()')  # 要保证策略索引名称和策略类名称
+    # please ensure that the policy index name and policy class name
+    policy = eval('policy_ob.' + policy_config.name + '()')
 
     # policy = policy_factory[policy_config.name]()
-    # 这里定义奖励估计器，实际我们只是使用环境自带的奖励(这部分是否可以注释掉)
     # reward_estimator = Reward_Estimator()
     # env_config = config.EnvConfig(args.debug)
     # reward_estimator.configure(env_config)
     # policy.reward_estimator = reward_estimator
 
-    # 策略加载模型
+    # policy loading model
     policy.configure(policy_config, device)
     if policy.trainable:
         if args.model_dir is None:
             parser.error('Trainable policy must be specified with a model weights directory')
         policy.load_model(model_weights)
 
-    # configure environment，配置环境
+    # configure environment
     env_config = config.EnvConfig(args.debug)
     env_config.sim.random_seed_base = args.randomseed
 
@@ -129,8 +129,8 @@ def main(args):
         logging.info('orca agent buffer: %f', robot.policy.safety_space)
 
     policy.set_env(env)
+    # print environmental information such as the number of pedestrians
     robot.print_info()
-    # 打印行人数量等环境信息
 
 
     if args.visualize:
@@ -180,7 +180,6 @@ def main(args):
             env.render('traj', video_file)
             plt.close()
         else:
-            # 下面针对vedio需要进行好好捋一捋
             if args.video_dir is not None:
                 if policy_config.name == 'gcn':
                     args.video_file = os.path.join(args.video_dir, policy_config.name + '_' + policy_config.gcn.similarity_function)
@@ -218,24 +217,24 @@ def main(args):
         ax1 = plt.subplot(2, 1, 1)
         # ax1.set_xlabel('time step', fontsize=14)
         ax1.set_ylabel('velocity', fontsize=14)
-        ax1.text(x=0.5,  # 文本x轴坐标
-                 y=0,  # 文本y轴坐标
-                 s='mean delta_v=' + str(v_change),  # 文本内容
-                 rotation=1,  # 文字旋转
-                 ha='left',  # x=2.2是文字的左端位置，可选'center', 'right', 'left'
-                 va='baseline',  # y=8是文字的低端位置，可选'center', 'top', 'bottom', 'baseline', 'center_baseline'
+        ax1.text(x=0.5,  # x-axis coordinate
+                 y=0,  # y-axis coordinate
+                 s='mean delta_v=' + str(v_change),  # Text content
+                 rotation=1,  # Text rotation
+                 ha='left',
+                 va='baseline',
                  )
         plt.plot(positions, velocity_rec, color='r', marker='.', linestyle='dashed')
         ax2 = plt.subplot(2, 1, 2)
         ax2.set_xlabel('time step', fontsize=14)
         ax2.set_ylabel('rotation', fontsize=14)
         r_change = np.mean(abs(np.array(rotation_rec[1:]) - np.array(rotation_rec[:-1])))
-        ax2.text(x=0.5,  # 文本x轴坐标
-                 y=-0.5,  # 文本y轴坐标
-                 s='mean delta_w=' + str(r_change),  # 文本内容
-                 rotation=1,  # 文字旋转
-                 ha='left',  # x=2.2是文字的左端位置，可选'center', 'right', 'left'
-                 va='baseline',  # y=8是文字的低端位置，可选'center', 'top', 'bottom', 'baseline', 'center_baseline'
+        ax2.text(x=0.5,  # x-axis coordinate
+                 y=-0.5,   # y-axis coordinate
+                 s='mean delta_w=' + str(r_change),  # Text content
+                 rotation=1,  # Text rotation
+                 ha='left',
+                 va='baseline',
                  )
         plt.plot(positions, rotation_rec, color='b', marker='.', linestyle='dashed')
         store_pos_traj = "new_pic/complex/traj/"

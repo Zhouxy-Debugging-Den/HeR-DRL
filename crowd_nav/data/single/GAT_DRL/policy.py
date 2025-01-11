@@ -67,8 +67,8 @@ class GraphAttentionLayerSim(nn.Module):
         return A
 def init_weights(m):
     if isinstance(m, nn.Linear):
-        nn.init.xavier_uniform_(m.weight)  # 使用Xavier初始化权重
-        nn.init.constant_(m.bias, 0)        # 将偏置初始化为常数0
+        nn.init.xavier_uniform_(m.weight)  # Initialize weights using Xavier
+        nn.init.constant_(m.bias, 0)        # Initialize the bias to a constant 0
 def mlp(input_dim, mlp_dims, last_relu=False):
     layers = []
     mlp_dims = [input_dim] + mlp_dims
@@ -235,7 +235,6 @@ class ValueNetwork(nn.Module):
                 output = H1 + H2 + X
             else:
                 output = H2
-            # 这一步发生了梯度消失
             output_value=self.value_net(output[:, 0, :])
             return output_value
 
@@ -250,15 +249,6 @@ class sg_dq3n(MultiHumanRL):
     def configure(self, config,device):
         self.multiagent_training = config.gcn.multiagent_training
         num_layer = config.gcn.num_layer
-        # X_dim = config.gcn.X_dim
-        # wr_dims = config.gcn.wr_dims
-        # wh_dims = config.gcn.wh_dims
-        # final_state_dim = config.gcn.final_state_dim
-        # gcn2_w1_dim = config.gcn.gcn2_w1_dim
-        #
-        # human_num=config.gcn.human_num
-        # planning_dims = config.gcn.planning_dims
-        # with_global_state = config.hetero.with_global_state
         self.device=device
         self.set_common_parameters(config)
 

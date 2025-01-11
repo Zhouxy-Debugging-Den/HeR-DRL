@@ -3,7 +3,7 @@ from crowd_sim.envs.utils.state import JointState
 
 
 class Human(Agent):
-    # 多了id信息
+    #
     def __init__(self, config, section):
         super().__init__(config, section)
         self.id = None

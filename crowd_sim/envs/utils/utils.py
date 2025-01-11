@@ -4,7 +4,6 @@ import numpy as np
 def point_to_segment_dist(x1, y1, x2, y2, x3, y3):
     """
     Calculate the closest distance between point(x3, y3) and a line segment with two endpoints (x1, y1), (x2, y2)
-
     """
     px = x2 - x1
     py = y2 - y1

@@ -3,7 +3,6 @@ from crowd_sim.envs.utils.state_multi import JointState
 
 
 class Other_Robot(Agent):
-    # 多了id信息
     def __init__(self, config, section):
         super().__init__(config, section)
         self.id = None

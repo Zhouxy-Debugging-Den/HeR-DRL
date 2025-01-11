@@ -8,7 +8,7 @@ class FullState(object):
         self.vx = vx
         self.vy = vy
         self.radius = radius
-        self.catogory = multi   # 0是机器人，1是行人
+        self.catogory = multi   # 0 is robot, 1 is human
         self.gx = gx
         self.gy = gy
         self.v_pref = v_pref
